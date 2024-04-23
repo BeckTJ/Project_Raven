@@ -21,11 +21,11 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      working-directory: ../RavenAPI
+      working-directory: ./RavenAPI
       run: dotnet restore
     - name: Build
-      working-directory: ../RavenAPI
+      working-directory: ./RavenAPI
       run: dotnet build --no-restore
     - name: Test
-      working-directory: ../RavenAPI
+      working-directory: ./RavenAPI
       run: dotnet test --no-build --verbosity normal
