@@ -1,8 +1,10 @@
 FROM postgres
 
-RUN mkdir -p /usr/DbPsql
-WORKDIR /usr/DbPsql
+RUN mkdir -p /usr/raven
+WORKDIR /usr/raven
 
-EXPOSE 1433
+COPY ./Data /usr/raven/
 
-CMD /bin/bash ./entrypoint
+EXPOSE 5432
+
+CMD /bin/bash ./entrypoint.sh
