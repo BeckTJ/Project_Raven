@@ -13,7 +13,7 @@ copy Materials.HighPurityMaterial from '/usr/raven/MaterialData.csv' delimiter '
         ParentMaterialNumber INT NOT NULL
     );
 
-    copy vendor from '/usr/raven/Data/MaterialVendor.csv' delimiter ',' csv header;
+    copy vendor from '/usr/raven/MaterialVendor.csv' delimiter ',' csv header;
     
     INSERT INTO Materials.RawMaterialVendor
     (MaterialNumber,VendorName,MaterialCode,BatchManaged,ContainerNumberRequired,SequenceId,TotalRecords,UnitOfIssue,ParentMaterialNumber)

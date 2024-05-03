@@ -1,16 +1,16 @@
 services:
+  web:
+    build: ./RavenAPI/.
+    ports:
+      - '8080:80'
+
   db:
     image: postgres
+    build:
+      context: ./DbPsql/.
+      dockerfile: Dockerfile
     restart: always
     environment:
-      POSTGRES_PASSWORD: sample
-  volumes:
--pgdata: /var/lib/postgresql/data
-
-volumes:
-  pgdata:
-    adminer:
-      image: adminer
-      restart: always
-      ports:
-        - 8080:8080
+      POSTGRES_PASSWORD: password
+    ports:
+      - 5432:5432
