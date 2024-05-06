@@ -5,11 +5,8 @@ services:
       - '8080:80'
 
   db:
-    image: postgres
     build:
       context: ./DbPsql/.
-      dockerfile: Dockerfile
-    restart: always
     environment:
       POSTGRES_PASSWORD: password
     ports:

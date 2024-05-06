@@ -1,4 +1,4 @@
-copy Materials.HighPurityMaterial from '/usr/raven/MaterialData.csv' delimiter ',' csv header;
+\copy Materials.HighPurityMaterial from 'MaterialData.csv' delimiter ',' csv header;
 
 --drop table vendor;
     create temporary table vendor(
@@ -13,7 +13,7 @@ copy Materials.HighPurityMaterial from '/usr/raven/MaterialData.csv' delimiter '
         ParentMaterialNumber INT NOT NULL
     );
 
-    copy vendor from '/usr/raven/MaterialVendor.csv' delimiter ',' csv header;
+    \copy vendor from 'MaterialVendor.csv' delimiter ',' csv header;
     
     INSERT INTO Materials.RawMaterialVendor
     (MaterialNumber,VendorName,MaterialCode,BatchManaged,ContainerNumberRequired,SequenceId,TotalRecords,UnitOfIssue,ParentMaterialNumber)

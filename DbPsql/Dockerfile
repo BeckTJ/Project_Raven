@@ -1,10 +1,12 @@
 FROM postgres
 
+COPY ./DbBuild.sql /docker-entrypoint-initdb.d/
+
 RUN mkdir -p /usr/raven
 WORKDIR /usr/raven
 
 COPY ./Data /usr/raven/
 
-EXPOSE 5432
+USER postgres
 
-CMD /bin/bash ./entrypoint.sh
+EXPOSE 5432
