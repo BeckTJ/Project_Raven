@@ -1,0 +1,7 @@
+﻿MaterialNumber,MaterialName,Binomial,PermitNumber,MaterialCode,BatchManaged,SequenceId,TotalRecords,UnitOfIssue
+58971,Milk,MLK,123-ABC-1234,AB,1,900,100,kg
+58423,Fruit Juice,FRJU,234-ABC-1235,BB,1,200,100,kg
+58913,Lemonade,LMND,345-ABC-1236,CB,1,400,100,kg
+58245,Beer,BEER,456-ABC-1237,DB,1,200,100,kg
+58143,Wine,WIN,,EB,1,700,100,kg
+58765,Liquor,LQR,678-ABC-1239,FB,1,600,100,kg
