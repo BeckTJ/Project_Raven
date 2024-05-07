@@ -1,10 +1,10 @@
-name: Docker Image CI
+name: Docker Image RavenAPI
 
 on:
   push:
-    branches: ['development']
+    branches: ['master', 'development']
   pull_request:
-    branches: ['development']
+    branches: ['master', 'development']
 
 jobs:
   build:
@@ -13,5 +13,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build the Docker image
-        working-directory: .
-        run: docker compose up --build
+        working-directory: ./RavenAPI
+        run: docker build . --file Dockerfile --tag ravenapi:$(date +%s)
