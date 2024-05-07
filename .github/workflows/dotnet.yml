@@ -5,27 +5,26 @@ name: .NET
 
 on:
   push:
-    branches: [ "master", "test" ]
+    branches: ['master']
   pull_request:
-    branches: [ "master" ]
+    branches: ['master', 'test']
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 6.0.x
-    - name: Restore dependencies
-      working-directory: ./RavenAPI
-      run: dotnet restore
-    - name: Build
-      working-directory: ./RavenAPI
-      run: dotnet build --no-restore
-    - name: Test
-      working-directory: ./RavenAPI
-      run: dotnet test --no-build --verbosity normal
+      - uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 6.0.x
+      - name: Restore dependencies
+        working-directory: ./RavenAPI
+        run: dotnet restore
+      - name: Build
+        working-directory: ./RavenAPI
+        run: dotnet build --no-restore
+      - name: Test
+        working-directory: ./RavenAPI
+        run: dotnet test --no-build --verbosity normal
