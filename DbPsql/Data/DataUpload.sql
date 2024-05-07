@@ -1,3 +1,4 @@
+
 \copy Materials.HighPurityMaterial from 'MaterialData.csv' delimiter ',' csv header;
 
 --drop table vendor;
