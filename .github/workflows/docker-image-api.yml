@@ -2,6 +2,7 @@ name: Docker Image RavenAPI
 
 on:
   push:
+
     branches: ['master', 'test']
   pull_request:
     branches: ['master', 'test']
