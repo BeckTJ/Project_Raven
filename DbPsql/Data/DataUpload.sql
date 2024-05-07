@@ -1,7 +1,5 @@
-
 \copy Materials.HighPurityMaterial from 'MaterialData.csv' delimiter ',' csv header;
 
---drop table vendor;
     create temporary table vendor(
         MaterialNumber INT NOT NULL PRIMARY KEY,
         VendorName VARCHAR(25) NOT NULL,

@@ -1,7 +1,10 @@
 CREATE USER RavenAdmin;
+
 CREATE DATABASE Raven;
 
 GRANT ALL PRIVILEGES ON DATABASE Raven TO RavenAdmin;
+
+\c raven
 
 CREATE SCHEMA Materials;
 CREATE SCHEMA Distillation;
@@ -18,7 +21,7 @@ CREATE TABLE Materials.HighPurityMaterial
     TotalRecords INT NOT NULL,
     UnitOfIssue VARCHAR(3)
 );
-CREATE TABLE Materials.RawMaterialVendor
+CREATE TABLE Materials.RawMaterialVendor 
 (
     MaterialNumber INT NOT NULL PRIMARY KEY,
     VendorName VARCHAR(25) NOT NULL,
@@ -42,6 +45,5 @@ CREATE TABLE Distillation.RawMaterialLog
     IssueDate DATE NOT NULL,
     NetWeight INT DEFAULT 180,
     MaterialNumber INT NOT NULL REFERENCES Materials.RawMaterialVendor(MaterialNumber)
-);
-
+)
 \i ../raven/DataUpload.sql;
