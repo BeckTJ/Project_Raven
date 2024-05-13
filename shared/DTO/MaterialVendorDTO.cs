@@ -1,4 +1,3 @@
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace shared.DTO;
 
@@ -11,6 +10,6 @@ public record MaterialVendorDTO
     bool ContainerNumberRequired { get; set; }
     int SequenceId { get; set; }
     int TotalRecords { get; set; }
-    string UnitOfIssue { get; set; }
+    string UnitOfIssue { get; set; } = null!;
     int ParentMaterialNumber { get; set; }
 }

@@ -10,13 +10,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repo", "..\Repo\Repo.csproj", "{3A5F010A-87F7-4657-B0D9-69AAD398210C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repo.Contracts", "..\Repo.Contracts\Repo.Contracts.csproj", "{C28B137E-079D-45D4-9B1B-A4E3D8F01891}"
-	ProjectSection(ProjectDependencies) = postProject
-		{3A5F010A-87F7-4657-B0D9-69AAD398210C} = {3A5F010A-87F7-4657-B0D9-69AAD398210C}
-	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repo.Tests.Intigration", "..\Repo.Tests.Intigration\Repo.Tests.Intigration.csproj", "{57D1058A-4E2C-4408-856E-042B066D10D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repo.Tests.Intigration", "..\Repo.Tests.Intigration\Repo.Tests.Intigration.csproj", "{57D1058A-4E2C-4408-856E-042B066D10D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "shared", "..\shared\shared.csproj", "{2B805004-006E-40E3-8C79-007DA9FA88B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "shared", "..\shared\shared.csproj", "{2B805004-006E-40E3-8C79-007DA9FA88B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

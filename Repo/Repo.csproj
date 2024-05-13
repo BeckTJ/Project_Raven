@@ -2,6 +2,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Entities\Entities.csproj" />
+    <ProjectReference Include="..\Repo.Contracts\Repo.Contracts.csproj" />
+    <ProjectReference Include="..\shared\shared.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
