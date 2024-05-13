@@ -3,7 +3,7 @@
 namespace Repo.Contracts;
 public interface IMaterialRepo
 {
-    IEnumerable<MaterialDTO> GetAllMaterial();
-    MaterialDTO GetMaterialByMaterialNumber(int materialNumber);
-    MaterialDTO GetMaterialByMaterialBinomial(string binomial);
+    Task<IEnumerable<MaterialDTO>> GetAllMaterial();
+    Task<MaterialDTO> GetMaterialByMaterialNumber(int materialNumber);
+    Task<MaterialDTO> GetMaterialByMaterialBinomial(string binomial);
 }

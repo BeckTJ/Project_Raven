@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repo", "..\Repo\Repo.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repo.Contracts", "..\Repo.Contracts\Repo.Contracts.csproj", "{C28B137E-079D-45D4-9B1B-A4E3D8F01891}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repo.Tests.Intigration", "..\Repo.Tests.Intigration\Repo.Tests.Intigration.csproj", "{57D1058A-4E2C-4408-856E-042B066D10D6}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "shared", "..\shared\shared.csproj", "{2B805004-006E-40E3-8C79-007DA9FA88B2}"
 EndProject
 Global
@@ -37,10 +35,6 @@ Global
 		{C28B137E-079D-45D4-9B1B-A4E3D8F01891}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C28B137E-079D-45D4-9B1B-A4E3D8F01891}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C28B137E-079D-45D4-9B1B-A4E3D8F01891}.Release|Any CPU.Build.0 = Release|Any CPU
-		{57D1058A-4E2C-4408-856E-042B066D10D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{57D1058A-4E2C-4408-856E-042B066D10D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{57D1058A-4E2C-4408-856E-042B066D10D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{57D1058A-4E2C-4408-856E-042B066D10D6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2B805004-006E-40E3-8C79-007DA9FA88B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2B805004-006E-40E3-8C79-007DA9FA88B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B805004-006E-40E3-8C79-007DA9FA88B2}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -1,13 +1,13 @@
 ﻿namespace shared.DTO;
 public record MaterialDTO
 {
-    int MaterialNumber { get; set; }
-    string Name { get; set; } = null!;
-    string Binomial { get; set; } = null!;
-    string PermitNumber { get; set; } = null!;
-    bool BatchManaged { get; set; }
-    int SequenceId { get; set; }
-    int totalRecords { get; set; }
-    string UnitOfIssue { get; set; } = null!;
-    ICollection<MaterialVendorDTO>? MaterialVendor { get; set; }
+    public int MaterialNumber { get; set; }
+    public string Name { get; set; } = null!;
+    public string Binomial { get; set; } = null!;
+    public string PermitNumber { get; set; } = null!;
+    public bool BatchManaged { get; set; }
+    public int SequenceId { get; set; }
+    public int totalRecords { get; set; }
+    public string UnitOfIssue { get; set; } = null!;
+    public IEnumerable<MaterialVendorDTO>? MaterialVendors { get; set; }
 }
