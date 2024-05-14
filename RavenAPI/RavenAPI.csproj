@@ -18,6 +18,9 @@
     <ProjectReference Include="..\Repo\Repo.csproj" />
     <ProjectReference Include="..\Repo.Contracts\Repo.Contracts.csproj" />
     <ProjectReference Include="..\shared\shared.csproj" />
+    <ProjectReference Include="..\Presentation\Presentation.csproj" />
+    <ProjectReference Include="..\Services\Services.csproj" />
+    <ProjectReference Include="..\Services.Contracts\Services.Contracts.csproj" />
   </ItemGroup>
 
 </Project>
