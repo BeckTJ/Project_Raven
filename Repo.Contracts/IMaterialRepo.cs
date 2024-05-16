@@ -1,9 +1,9 @@
-﻿using shared.DTO;
+﻿using Entities;
 
 namespace Repo.Contracts;
 public interface IMaterialRepo
 {
-    Task<IEnumerable<MaterialDTO>> GetAllMaterial();
-    Task<MaterialDTO> GetMaterialByMaterialNumber(int materialNumber);
-    Task<MaterialDTO> GetMaterialByMaterialBinomial(string binomial);
+    Task<IEnumerable<Highpuritymaterial>> GetAllMaterial();
+    Task<Highpuritymaterial> GetMaterialByMaterialNumber(int materialNumber);
+    Task<Highpuritymaterial> GetMaterialByMaterialBinomial(string binomial);
 }

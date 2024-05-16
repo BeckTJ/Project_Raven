@@ -1,26 +1,23 @@
 using Entities;
 using Microsoft.EntityFrameworkCore;
 using Repo.Contracts;
-using shared.DTO;
+
 
 namespace Repo;
 
-internal sealed class MaterialRepo : RepoBase<MaterialDTO>, IMaterialRepo
+internal sealed class MaterialRepo : RepoBase<Highpuritymaterial>, IMaterialRepo
 {
     public MaterialRepo(ravenContext ctx) : base(ctx) { }
 
-    public async Task<IEnumerable<MaterialDTO>> GetAllMaterial() =>
+    public async Task<IEnumerable<Highpuritymaterial>> GetAllMaterial() =>
         await FindAll()
-            .Include(m => m.MaterialVendors)
+            .Include(m => m.Rawmaterialvendors)
             .ToListAsync();
 
-    public async Task<MaterialDTO> GetMaterialByMaterialBinomial(string binomial)
-    {
-        throw new NotImplementedException();
-    }
+    public async Task<Highpuritymaterial> GetMaterialByMaterialBinomial(string binomial) =>
+        await FindByCondition(m => m.Binomial == binomial).FirstAsync();
 
-    public async Task<MaterialDTO> GetMaterialByMaterialNumber(int materialNumber)
-    {
-        throw new NotImplementedException();
-    }
+
+    public async Task<Highpuritymaterial> GetMaterialByMaterialNumber(int materialNumber) =>
+        await FindByCondition(m => m.Materialnumber == materialNumber).FirstAsync();
 }

@@ -2,7 +2,10 @@ using Microsoft.EntityFrameworkCore;
 using Entities;
 using Repo.Contracts;
 using Repo;
+using Services;
+using Services.Contracts;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
+using System.Net;
 
 namespace RavenAPI.Extentions;
 
@@ -30,5 +33,9 @@ public static class ServiceExtentions
     public static void ConfigureRepoManager(this IServiceCollection services)
     {
         services.AddScoped<IRepoManager, RepoManager>();
+    }
+    public static void ConfigureServiceManager(this IServiceCollection services)
+    {
+        services.AddScoped<IServiceManager, ServiceManager>();
     }
 }

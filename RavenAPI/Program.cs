@@ -8,6 +8,8 @@ builder.Services.ConfigureCors();
 builder.Services.ConfigureIISIntegration();
 builder.Services.ConfigurePostgresContext(builder.Configuration);
 builder.Services.ConfigureRepoManager();
+builder.Services.ConfigureServiceManager();
+builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddControllers(config =>
 {
