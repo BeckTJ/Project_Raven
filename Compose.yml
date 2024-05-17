@@ -1,6 +1,6 @@
 services:
   web:
-    build: ./RavenAPI/.
+    build: .
     ports:
       - '8080:80'
 
@@ -8,6 +8,7 @@ services:
     build:
       context: ./DbPsql/.
     environment:
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
     ports:
       - 5432:5432

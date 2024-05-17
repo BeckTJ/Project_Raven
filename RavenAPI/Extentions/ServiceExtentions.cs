@@ -27,8 +27,8 @@ public static class ServiceExtentions
     }
     public static void ConfigurePostgresContext(this IServiceCollection services, IConfiguration config)
     {
-        var connectionString = config["pgConnection:connectionString"];
-        services.AddDbContext<ravenContext>(o => o.UseNpgsql(connectionString));
+        var connectionString = config.GetConnectionString("pgConnection");
+        services.AddDbContext<ravenContext>(o => o.UseNpgsql(connectionString!));
     }
     public static void ConfigureRepoManager(this IServiceCollection services)
     {
