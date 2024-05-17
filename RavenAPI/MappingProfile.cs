@@ -14,6 +14,9 @@ public class MappingProfile : Profile
     public MappingProfile()
     {
         CreateMap<Highpuritymaterial, MaterialDTO>();
+        CreateMap<MaterialDTO, Highpuritymaterial>();
+
         CreateMap<Rawmaterialvendor, MaterialVendorDTO>();
+        CreateMap<MaterialVendorDTO, Rawmaterialvendor>();
     }
 }

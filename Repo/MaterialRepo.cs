@@ -17,7 +17,14 @@ internal sealed class MaterialRepo : RepoBase<Highpuritymaterial>, IMaterialRepo
     public async Task<Highpuritymaterial> GetMaterialByMaterialBinomial(string binomial) =>
         await FindByCondition(m => m.Binomial == binomial).FirstAsync();
 
-
     public async Task<Highpuritymaterial> GetMaterialByMaterialNumber(int materialNumber) =>
         await FindByCondition(m => m.Materialnumber == materialNumber).FirstAsync();
+    
+    public void CreateMaterial(Highpuritymaterial material) =>
+        Create(material);
+
+    public void UpdateMaterial(Highpuritymaterial material) =>
+        Update(material);
+    public void DeleteMaterial(Highpuritymaterial material) =>
+        Delete(material);
 }

@@ -22,10 +22,16 @@ public class MaterialController : ControllerBase
         var materials = await _services.MaterialService.GetAllMaterial();
         return Ok(materials);
     }
-    [HttpGet("{MaterialNumber:int}")]
+    [HttpGet("{MaterialNumber:int}", Name = "MaterialByMaterialNumber")]
     public async Task<IActionResult> GetMaterialByMaterialNumber(int materialNumber)
     {
         var material = await _services.MaterialService.GetMaterialByMaterialNumber(materialNumber);
         return Ok(material);
+    }
+    [HttpPost]
+    public IActionResult CreateMaterial([FromBody] MaterialDTO material)
+    {
+        _services.MaterialService.AddMaterial(material);
+        return CreatedAtRoute("GetMaterialByMaterialNumber", new {materialNumber = material.MaterialNumber});
     }
 }

@@ -1,4 +1,5 @@
 using AutoMapper;
+using Entities;
 using Repo.Contracts;
 using Services.Contracts;
 using shared.DTO;
@@ -32,4 +33,20 @@ internal sealed class VendorServices : IVendorServices
         var vendorDTO = _mapper.Map<MaterialVendorDTO>(vendor);
         return vendorDTO;
     }
+        public void AddMaterialVendor(MaterialVendorDTO material)
+    {
+        var rmMaterial = _mapper.Map<Rawmaterialvendor>(material);
+        _repo.VendorRepo.CreateMaterial(rmMaterial);
+    }
+        public void UpdateMaterialVendor(MaterialVendorDTO material)
+    {
+        var rmMaterial = _mapper.Map<Rawmaterialvendor>(material);
+        _repo.VendorRepo.UpdateMaterial(rmMaterial);
+    }
+    public void DeleteMaterialVendor(MaterialVendorDTO material)
+    {
+        var rmMaterial = _mapper.Map<Rawmaterialvendor>(material);
+        _repo.VendorRepo.DeleteMaterial(rmMaterial);
+    }
+
 }

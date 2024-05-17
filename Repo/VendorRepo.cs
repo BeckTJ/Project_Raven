@@ -20,4 +20,12 @@ internal sealed class VendorRepo : RepoBase<Rawmaterialvendor>, IVendorRepo
 
     public async Task<Rawmaterialvendor> GetVendorByVendorName(string vendorName) =>
         await FindByCondition(m => m.Vendorname == vendorName).FirstAsync();
+    
+    public void CreateMaterial(Rawmaterialvendor material) =>
+        Create(material);
+
+    public void UpdateMaterial(Rawmaterialvendor material) =>
+        Update(material);
+    public void DeleteMaterial(Rawmaterialvendor material) =>
+        Delete(material);
 }

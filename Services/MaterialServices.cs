@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Entities;
 using Repo.Contracts;
 using Services.Contracts;
 using shared.DTO;
@@ -25,4 +26,20 @@ internal sealed class MaterialServices : IMaterialServices
         var materialDTO = _mapper.Map<MaterialDTO>(material);
         return materialDTO;
     }
+    public void AddMaterial(MaterialDTO material)
+    {
+        var hpMaterial = _mapper.Map<Highpuritymaterial>(material);
+        _repo.MaterialRepo.CreateMaterial(hpMaterial);
+    }
+        public void UpdateMaterial(MaterialDTO material)
+    {
+        var hpMaterial = _mapper.Map<Highpuritymaterial>(material);
+        _repo.MaterialRepo.UpdateMaterial(hpMaterial);
+    }
+    public void DeleteMaterial(MaterialDTO material)
+    {
+        var hpMaterial = _mapper.Map<Highpuritymaterial>(material);
+        _repo.MaterialRepo.DeleteMaterial(hpMaterial);
+    }
+
 }
