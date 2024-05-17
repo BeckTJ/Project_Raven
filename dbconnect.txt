@@ -1,3 +1,6 @@
 dotnet ef dbcontext scaffold "Host=my_host;Database=my_db;
     Username=my_user;Password=my_pw" 
     Npgsql.EntityFrameworkCore.PostgreSQL
+
+
+    dotnet ef dbcontext scaffold "Host=localhost;Database=raven; Username=postgres;Password=password" Npgsql.EntityFrameworkCore.PostgreSQL

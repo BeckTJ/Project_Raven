@@ -26,7 +26,7 @@ public class MaterialController : ControllerBase
     public async Task<IActionResult> GetMaterialByMaterialNumber(int materialNumber)
     {
         var material = await _services.MaterialService.GetMaterialByMaterialNumber(materialNumber);
-        return Ok(material);
+        return Ok(material); 
     }
     [HttpPost]
     public IActionResult CreateMaterial([FromBody] MaterialDTO material)
