@@ -42,9 +42,7 @@ namespace Entities
                     .ValueGeneratedNever()
                     .HasColumnName("materialnumber");
 
-                entity.Property(e => e.Batchmanaged)
-                    .HasColumnType("bit(1)")
-                    .HasColumnName("batchmanaged");
+                entity.Property(e => e.Batchmanaged).HasColumnName("batchmanaged");
 
                 entity.Property(e => e.Binomial)
                     .HasMaxLength(6)
@@ -126,13 +124,9 @@ namespace Entities
                     .ValueGeneratedNever()
                     .HasColumnName("materialnumber");
 
-                entity.Property(e => e.Batchmanaged)
-                    .HasColumnType("bit(1)")
-                    .HasColumnName("batchmanaged");
+                entity.Property(e => e.Batchmanaged).HasColumnName("batchmanaged");
 
-                entity.Property(e => e.Containernumberrequired)
-                    .HasColumnType("bit(1)")
-                    .HasColumnName("containernumberrequired");
+                entity.Property(e => e.Containernumberrequired).HasColumnName("containernumberrequired");
 
                 entity.Property(e => e.Materialcode)
                     .HasMaxLength(3)

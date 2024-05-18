@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections;
 
 namespace Entities
 {
@@ -16,7 +15,7 @@ namespace Entities
         public string Binomial { get; set; } = null!;
         public string? Permitnumber { get; set; }
         public string Materialcode { get; set; } = null!;
-        public bool Batchmanaged { get; set; }
+        public bool? Batchmanaged { get; set; }
         public int Sequenceid { get; set; }
         public int Totalrecords { get; set; }
         public string? Unitofissue { get; set; }

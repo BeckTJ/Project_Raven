@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections;
 
 namespace Entities
 {
@@ -14,8 +13,8 @@ namespace Entities
         public int Materialnumber { get; set; }
         public string Vendorname { get; set; } = null!;
         public string Materialcode { get; set; } = null!;
-        public bool Batchmanaged { get; set; }
-        public bool Containernumberrequired { get; set; }
+        public bool? Batchmanaged { get; set; }
+        public bool? Containernumberrequired { get; set; }
         public int Sequenceid { get; set; }
         public int Totalrecords { get; set; }
         public string? Unitofissue { get; set; }
