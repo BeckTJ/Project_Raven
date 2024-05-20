@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections;
 
 namespace Entities
 {
@@ -8,20 +7,20 @@ namespace Entities
     {
         public Rawmaterialvendor()
         {
-            Rawmateriallogs = new HashSet<Rawmateriallog>();
+            RawMaterialLogs = new HashSet<Rawmateriallog>();
         }
 
-        public int Materialnumber { get; set; }
-        public string Vendorname { get; set; } = null!;
-        public string Materialcode { get; set; } = null!;
-        public BitArray? Batchmanaged { get; set; }
-        public BitArray? Containernumberrequired { get; set; }
-        public int Sequenceid { get; set; }
-        public int Totalrecords { get; set; }
-        public string? Unitofissue { get; set; }
-        public int Parentmaterialnumber { get; set; }
+        public int MaterialNumber { get; set; }
+        public string VendorName { get; set; } = null!;
+        public string MaterialCode { get; set; } = null!;
+        public bool? BatchManaged { get; set; }
+        public bool? ContainerNumberRequired { get; set; }
+        public int SequenceId { get; set; }
+        public int TotalRecords { get; set; }
+        public string? UnitOfIssue { get; set; }
+        public int ParentMaterialNumber { get; set; }
 
-        public virtual Highpuritymaterial ParentmaterialnumberNavigation { get; set; } = null!;
-        public virtual ICollection<Rawmateriallog> Rawmateriallogs { get; set; }
+        public virtual Highpuritymaterial ParentMaterialNumberNavigation { get; set; } = null!;
+        public virtual ICollection<Rawmateriallog> RawMaterialLogs { get; set; }
     }
 }

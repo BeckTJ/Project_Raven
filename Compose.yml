@@ -1,15 +1,27 @@
+version: '0.1'
+
 services:
-  web:
-
-    build: .
-    ports:
-      - '8080:80'
-
   db:
     build:
       context: ./DbPsql/.
+    container_name: raven
+    restart: always
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
     ports:
       - 5432:5432
+
+
+  api:
+    build:
+      context: .
+    container_name: api
+
+    environment:
+      ASPNETCORE_Environment: Development
+      ConnectionStrings_Default: Host=db;Port=5432;Database=raven;User Id=postgres;Password="password";
+    ports:
+      - 8080:80
+    depends_on:
+      - db

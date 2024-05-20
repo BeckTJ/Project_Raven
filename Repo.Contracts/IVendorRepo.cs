@@ -4,8 +4,11 @@ namespace Repo.Contracts;
 
 public interface IVendorRepo
 {
-    Task<IEnumerable<Rawmaterialvendor>> GetAllVendors();
-    Task<IEnumerable<Rawmaterialvendor>> GetAllVendorsWithRawMaterialLogs();
-    Task<Rawmaterialvendor> GetVendorByMaterialNumber(int materialNumber);
-    Task<Rawmaterialvendor> GetVendorByVendorName(string vendorName);
+    public Task<IEnumerable<Rawmaterialvendor>> GetAllVendors();
+    public Task<IEnumerable<Rawmaterialvendor>> GetAllVendorsWithRawMaterialLogs();
+    public Task<Rawmaterialvendor> GetVendorByMaterialNumber(int materialNumber);
+    public Task<Rawmaterialvendor> GetVendorByVendorName(string vendorName);
+    public void CreateMaterial(Rawmaterialvendor material);
+    public void UpdateMaterial(Rawmaterialvendor material);
+    public void DeleteMaterial(Rawmaterialvendor material);
 }

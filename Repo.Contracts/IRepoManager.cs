@@ -4,4 +4,6 @@ public interface IRepoManager
 {
     IMaterialRepo MaterialRepo { get; }
     IVendorRepo VendorRepo { get; }
+    Task Save();
+
 }
