@@ -8,15 +8,15 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["RavenAPI.csproj", "."]
-RUN dotnet restore "./RavenAPI.csproj"
+COPY [".", "."]
+RUN dotnet restore "RavenAPI/RavenAPI.csproj"
 COPY . .
 WORKDIR "/src/."
-RUN dotnet build "./RavenAPI.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "RavenAPI/RavenAPI.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./RavenAPI.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "RavenAPI/RavenAPI.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app

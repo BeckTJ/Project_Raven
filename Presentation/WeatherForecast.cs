@@ -1,4 +1,4 @@
-namespace RavenAPI
+namespace Presentation
 {
     public class WeatherForecast
     {

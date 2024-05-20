@@ -8,5 +8,3 @@ WORKDIR /usr/raven
 COPY ./Data /usr/raven/
 
 USER postgres
-
-EXPOSE 5432

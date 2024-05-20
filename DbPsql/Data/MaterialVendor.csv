@@ -1,19 +1,19 @@
 MaterialNumber,VendorName,MaterialCode,BatchManaged,ContainerNumberRequired,SequenceId,TotalRecords,UnitOfIssue,ParentMaterialNumber
-31777,Costco,AA,0,0,4000,100,kg,58971
-36178,Walmart,BA,0,0,100,100,kg,58423
-32144,Winco,CA,0,0,200,100,kg,58913
-32716,Liquor Store,DA,0,0,800,100,kg,58245
-32409,Wine Palace,EA,0,0,900,100,kg,58143
-30173,Bevmo,FA,0,0,100,100,kg,58765
-3282571,Stop N Shop,AA,0,0,800,100,kg,58971
-3322187,Ralphs,BA,0,0,600,100,kg,58423
-3665760,7 Eleven,CA,0,0,3000,100,kg,58913
-3081971,Faith's,DA,0,0,900,100,kg,58245
-3589067,Ranch,EA,0,0,200,100,kg,58143
-3579790,Russia,FA,0,0,1000,100,kg,58765
-3372033,Reclaim,AA,0,0,400,100,kg,58971
-3195356,Reclaim,BA,0,0,1000,100,kg,58423
-3531374,Reclaim,CA,0,0,200,100,kg,58913
-3948173,Reclaim,DA,0,0,800,100,kg,58245
-3473903,Reclaim,EA,0,0,100,100,kg,58143
-3789434,Reclaim,FA,0,0,2000,100,kg,58765
+31777,Costco,AA,false,false,4000,100,kg,58971
+36178,Walmart,BA,false,false,100,100,kg,58423
+32144,Winco,CA,false,false,200,100,kg,58913
+32716,Liquor Store,DA,false,false,800,100,kg,58245
+32409,Wine Palace,EA,false,false,900,100,kg,58143
+30173,Bevmo,FA,false,false,100,100,kg,58765
+3282571,Stop N Shop,AA,false,false,800,100,kg,58971
+3322187,Ralphs,BA,false,false,600,100,kg,58423
+3665760,7 Eleven,CA,false,false,3000,100,kg,58913
+3081971,Faith's,DA,false,false,900,100,kg,58245
+3589067,Ranch,EA,false,false,200,100,kg,58143
+3579790,Russia,FA,false,false,1000,100,kg,58765
+3372033,Reclaim,AA,false,false,400,100,kg,58971
+3195356,Reclaim,BA,false,false,1000,100,kg,58423
+3531374,Reclaim,CA,false,false,200,100,kg,58913
+3948173,Reclaim,DA,false,false,800,100,kg,58245
+3473903,Reclaim,EA,false,false,100,100,kg,58143
+3789434,Reclaim,FA,false,false,2000,100,kg,58765
