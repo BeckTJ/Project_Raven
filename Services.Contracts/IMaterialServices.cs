@@ -5,8 +5,8 @@ public interface IMaterialServices
 {
     public Task<IEnumerable<MaterialDTO>> GetAllMaterial();
     public Task<MaterialDTO> GetMaterialByMaterialNumber(int materialNumber);
-    public void AddMaterial(MaterialDTO material);
-    public void UpdateMaterial(MaterialDTO material);
-    public void DeleteMaterial(MaterialDTO material);
+    public Task<MaterialDTO> AddMaterial(MaterialDTO material);
+    public Task UpdateMaterial(int materialNumber, MaterialDTO material);
+    public Task DeleteMaterial(int materialNumber);
 
 }

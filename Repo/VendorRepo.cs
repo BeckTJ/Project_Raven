@@ -12,15 +12,15 @@ internal sealed class VendorRepo : RepoBase<Rawmaterialvendor>, IVendorRepo
 
     public async Task<IEnumerable<Rawmaterialvendor>> GetAllVendorsWithRawMaterialLogs() =>
         await FindAll()
-            .Include(m => m.Rawmateriallogs)
+            .Include(m => m.RawMaterialLogs)
             .ToListAsync();
 
     public async Task<Rawmaterialvendor> GetVendorByMaterialNumber(int materialNumber) =>
-        await FindByCondition(m => m.Materialnumber == materialNumber).FirstAsync();
+        await FindByCondition(m => m.MaterialNumber == materialNumber).FirstAsync();
 
     public async Task<Rawmaterialvendor> GetVendorByVendorName(string vendorName) =>
-        await FindByCondition(m => m.Vendorname == vendorName).FirstAsync();
-    
+        await FindByCondition(m => m.VendorName == vendorName).FirstAsync();
+
     public void CreateMaterial(Rawmaterialvendor material) =>
         Create(material);
 

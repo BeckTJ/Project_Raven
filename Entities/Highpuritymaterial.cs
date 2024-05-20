@@ -7,19 +7,19 @@ namespace Entities
     {
         public Highpuritymaterial()
         {
-            Rawmaterialvendors = new HashSet<Rawmaterialvendor>();
+            RawMaterialVendors = new HashSet<Rawmaterialvendor>();
         }
 
-        public int Materialnumber { get; set; }
-        public string Materialname { get; set; } = null!;
+        public int MaterialNumber { get; set; }
+        public string MaterialName { get; set; } = null!;
         public string Binomial { get; set; } = null!;
-        public string? Permitnumber { get; set; }
-        public string Materialcode { get; set; } = null!;
-        public bool? Batchmanaged { get; set; }
-        public int Sequenceid { get; set; }
-        public int Totalrecords { get; set; }
-        public string? Unitofissue { get; set; }
+        public string? PermitNumber { get; set; }
+        public string MaterialCode { get; set; } = null!;
+        public bool? BatchManaged { get; set; }
+        public int SequenceId { get; set; }
+        public int TotalRecords { get; set; }
+        public string? UnitOfIssue { get; set; }
 
-        public virtual ICollection<Rawmaterialvendor> Rawmaterialvendors { get; set; }
+        public virtual ICollection<Rawmaterialvendor> RawMaterialVendors { get; set; }
     }
 }

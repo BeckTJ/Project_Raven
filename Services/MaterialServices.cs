@@ -26,20 +26,26 @@ internal sealed class MaterialServices : IMaterialServices
         var materialDTO = _mapper.Map<MaterialDTO>(material);
         return materialDTO;
     }
-    public void AddMaterial(MaterialDTO material)
+    public async Task<MaterialDTO> AddMaterial(MaterialDTO material)
     {
         var hpMaterial = _mapper.Map<Highpuritymaterial>(material);
         _repo.MaterialRepo.CreateMaterial(hpMaterial);
+        await _repo.Save();
+        var materialReturn = _mapper.Map<MaterialDTO>(hpMaterial);
+        return materialReturn;
     }
-        public void UpdateMaterial(MaterialDTO material)
+    public async Task UpdateMaterial(int materialNumber, MaterialDTO material)
     {
         var hpMaterial = _mapper.Map<Highpuritymaterial>(material);
         _repo.MaterialRepo.UpdateMaterial(hpMaterial);
+
+        await _repo.Save();
     }
-    public void DeleteMaterial(MaterialDTO material)
+    public async Task DeleteMaterial(int materialNumber)
     {
-        var hpMaterial = _mapper.Map<Highpuritymaterial>(material);
-        _repo.MaterialRepo.DeleteMaterial(hpMaterial);
+        var material = await _repo.MaterialRepo.GetMaterialByMaterialNumber(materialNumber);
+        _repo.MaterialRepo.DeleteMaterial(material);
+        await _repo.Save();
     }
 
 }
