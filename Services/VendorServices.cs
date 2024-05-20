@@ -49,7 +49,7 @@ internal sealed class VendorServices : IVendorServices
     }
     public async Task DeleteMaterialVendor(int materialNumber)
     {
-        var material = _repo.VendorRepo.GetVendorByMaterialNumber(materialNumber);
+        var material = await _repo.VendorRepo.GetVendorByMaterialNumber(materialNumber);
         var rmMaterial = _mapper.Map<Rawmaterialvendor>(material);
         _repo.VendorRepo.DeleteMaterial(rmMaterial);
         await _repo.Save();
