@@ -54,5 +54,4 @@ internal sealed class VendorServices : IVendorServices
         _repo.VendorRepo.DeleteMaterial(rmMaterial);
         await _repo.Save();
     }
-
 }

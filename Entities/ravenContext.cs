@@ -26,6 +26,7 @@ namespace Entities
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseNpgsql("Host=localhost;Database=raven; Username=postgres;Password=password");
+
             }
         }
 
@@ -33,7 +34,9 @@ namespace Entities
         {
             modelBuilder.Entity<Highpuritymaterial>(entity =>
             {
+
                 entity.HasKey(e => e.MaterialNumber)
+
                     .HasName("highpuritymaterial_pkey");
 
                 entity.ToTable("highpuritymaterial", "materials");
@@ -43,6 +46,7 @@ namespace Entities
                     .HasColumnName("materialnumber");
 
                 entity.Property(e => e.BatchManaged).HasColumnName("batchmanaged");
+
 
                 entity.Property(e => e.Binomial)
                     .HasMaxLength(6)

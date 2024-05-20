@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Services.Contracts;
 using shared.DTO;
+
 namespace Presentation.Controllers;
 
 [Route("RavenAPI/MaterialVendor")]
@@ -19,12 +20,14 @@ public class MaterialVendorController : ControllerBase
         var vendor = await _services.MaterialVendor.GetAllVendors();
         return Ok(vendor);
     }
+
     [HttpGet("{MaterialNumber:int}", Name = "VendorByMaterialNumber")]
     public async Task<IActionResult> GetMaterialVendorByMaterialNumber(int materialNumber)
     {
         var vendor = await _services.MaterialVendor.GetVendorByMaterialNumber(materialNumber);
         return Ok(vendor);
     }
+
     [HttpPost]
     public async Task<IActionResult> CreateMaterialVendor([FromBody] MaterialVendorDTO vendor)
     {
