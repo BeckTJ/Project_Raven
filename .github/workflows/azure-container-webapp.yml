@@ -36,6 +36,7 @@ on:
 
 permissions:
   contents: read
+  packages: write
 
 jobs:
   build:
@@ -62,7 +63,7 @@ jobs:
         with:
           push: true
           tags: ghcr.io/${{ env.REPO }}:${{ github.sha }}
-          file: ../Dockerfile
+          file: ./Dockerfile
 
   deploy:
     permissions:
