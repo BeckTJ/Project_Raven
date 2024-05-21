@@ -9,4 +9,5 @@ public interface IMaterialRepo
     public void CreateMaterial(Highpuritymaterial material);
     public void UpdateMaterial(Highpuritymaterial material);
     public void DeleteMaterial(Highpuritymaterial material);
+
 }

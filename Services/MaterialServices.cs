@@ -47,5 +47,4 @@ internal sealed class MaterialServices : IMaterialServices
         _repo.MaterialRepo.DeleteMaterial(material);
         await _repo.Save();
     }
-
 }

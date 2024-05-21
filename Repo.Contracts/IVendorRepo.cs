@@ -11,5 +11,4 @@ public interface IVendorRepo
     public void CreateMaterial(Rawmaterialvendor material);
     public void UpdateMaterial(Rawmaterialvendor material);
     public void DeleteMaterial(Rawmaterialvendor material);
-
 }
