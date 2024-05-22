@@ -4,10 +4,7 @@ using Repo.Contracts;
 using Repo;
 using Services;
 using Services.Contracts;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
-using System.Net;
 using Npgsql;
-using System.Data.Common;
 
 namespace RavenAPI.Extentions;
 
