@@ -6,6 +6,8 @@ using Services;
 using Services.Contracts;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using System.Net;
+using Npgsql;
+using System.Data.Common;
 
 namespace RavenAPI.Extentions;
 
@@ -27,7 +29,13 @@ public static class ServiceExtentions
     }
     public static void ConfigurePostgresContext(this IServiceCollection services, IConfiguration config)
     {
-        var connectionString = config.GetConnectionString("pgConnection");
+        var conStr = new NpgsqlConnectionStringBuilder(
+            config.GetConnectionString("pgConnection"))
+        {
+            Username = config["POSTGRES_USER"],
+            Password = config["POSTGRES_PASSWORD"]
+        };
+        var connectionString = conStr.ConnectionString;
         services.AddDbContext<ravenContext>(o => o.UseNpgsql(connectionString!));
     }
     public static void ConfigureRepoManager(this IServiceCollection services)
