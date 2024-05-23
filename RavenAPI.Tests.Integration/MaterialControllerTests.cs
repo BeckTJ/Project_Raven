@@ -16,10 +16,10 @@ public class MaterialControllerTests
     [Fact]
     public async void Test1()
     {
-        var responce = await _client.GetAsync("/");
+        var responce = await _client.GetAsync("/RavenAPI/Material/58245");
         responce.EnsureSuccessStatusCode();
         var responceString = await responce.Content.ReadAsStringAsync();
 
-        Assert.Equal("Hello World!", responceString);
+        Assert.Contains("Beer", responceString);
     }
 }
