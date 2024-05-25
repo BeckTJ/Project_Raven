@@ -6,9 +6,11 @@ services:
       context: ./DbPsql/.
     container_name: raven
     restart: always
+    secrets: 
+      - my_secrets
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
+      - POSTGRES_USER='{/run/secrets/my_secrets/POSTGRES_USER}'
+      - POSTGRES_PASSWORD='{/run/secrets/my_secrets/POSTGRES_PASSWORD}'
     ports:
       - 5432:5432
 
@@ -20,8 +22,11 @@ services:
 
     environment:
       ASPNETCORE_Environment: Development
-      ConnectionStrings_Default: Host=db;Port=5432;Database=raven;User Id=postgres;Password="password";
     ports:
       - 8080:80
     depends_on:
       - db
+
+secrets:
+  my_secrets:
+    file: 'C:\Users\TBeck\AppData\Roaming\Microsoft\UserSecrets\39aa9da3-7917-4658-8bea-83da217705d1\secrets.json'
