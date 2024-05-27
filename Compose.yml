@@ -6,11 +6,6 @@ services:
       context: ./DbPsql/.
     container_name: raven
     restart: always
-    secrets: 
-      - my_secrets
-    environment:
-      POSTGRES_USER: /run/secrets/POSTGRES_USER
-      POSTGRES_PASSWORD: /run/secrets/POSTGRES_PASSWORD
     ports:
       - 5432:5432
 
@@ -19,11 +14,15 @@ services:
       context: .
     container_name: api
     environment:
+      POSTGRES_USER: /run/secrets/my_secrets
+      POSTGRES_PASSWORD: /run/secrets/my_secrets
       ASPNETCORE_Environment: Development
+    secrets:
+      - my_secrets
     ports:
       - 8080:80
     depends_on:
       - db
 secrets:
   my_secrets:
-    file: 'C:\Users\TBeck\AppData\Roaming\Microsoft\UserSecrets\39aa9da3-7917-4658-8bea-83da217705d1\secrets.json'
+    file: C:\Users\TBeck\AppData\Roaming\Microsoft\UserSecrets\39aa9da3-7917-4658-8bea-83da217705d1\secrets.json

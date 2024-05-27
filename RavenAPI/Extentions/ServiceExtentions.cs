@@ -33,7 +33,7 @@ public static class ServiceExtentions
             Password = config["POSTGRES_PASSWORD"]
         };
         var connectionString = conStr.ConnectionString;
-        services.AddDbContext<ravenContext>(o => o.UseNpgsql(connectionString!));
+        services.AddDbContext<ravenContext>(o => o.UseNpgsql(connectionString));
     }
     public static void ConfigureRepoManager(this IServiceCollection services)
     {

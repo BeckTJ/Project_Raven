@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>39aa9da3-7917-4658-8bea-83da217705d1</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerfileContext>.</DockerfileContext>
+    <DockerfileContext>Project_Raven\.</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
