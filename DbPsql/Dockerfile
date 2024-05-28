@@ -9,5 +9,3 @@ RUN mkdir -p /usr/raven
 WORKDIR /usr/raven
 
 COPY ./Data /usr/raven/
-
-USER postgres
