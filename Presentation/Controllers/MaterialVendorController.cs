@@ -17,14 +17,14 @@ public class MaterialVendorController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
-        var vendor = await _services.MaterialVendor.GetAllVendors();
+        var vendor = await _services.MaterialVendorService.GetAllVendors();
         return Ok(vendor);
     }
 
-    [HttpGet("{MaterialNumber:int}", Name = "VendorByMaterialNumber")]
+    [HttpGet("{MaterialNumber}", Name = "VendorByMaterialNumber")]
     public async Task<IActionResult> GetMaterialVendorByMaterialNumber(int materialNumber)
     {
-        var vendor = await _services.MaterialVendor.GetVendorByMaterialNumber(materialNumber);
+        var vendor = await _services.MaterialVendorService.GetVendorByMaterialNumber(materialNumber);
         return Ok(vendor);
     }
 
@@ -36,21 +36,21 @@ public class MaterialVendorController : ControllerBase
         if (!ModelState.IsValid)
             return UnprocessableEntity(ModelState);
 
-        var rawMaterial = await _services.MaterialVendor.AddMaterialVendor(vendor);
+        var rawMaterial = await _services.MaterialVendorService.AddMaterialVendor(vendor);
         return CreatedAtRoute("VendorByMaterialNumber", new { rawMaterial.MaterialNumber }, rawMaterial);
     }
-    [HttpDelete("{materialNumber:int}")]
+    [HttpDelete("{materialNumber}")]
     public async Task<IActionResult> DeleteMaterialVendor(int materialNumber)
     {
-        await _services.MaterialVendor.DeleteMaterialVendor(materialNumber);
+        await _services.MaterialVendorService.DeleteMaterialVendor(materialNumber);
         return NoContent();
     }
-    [HttpPut("{materialNumber:int}")]
+    [HttpPut("{materialNumber}")]
     public async Task<IActionResult> UpdateMaterialVendor(int materialNumber, [FromBody] MaterialVendorDTO vendorToUpdate)
     {
         if (vendorToUpdate is null)
             return BadRequest("Vendor is null");
-        await _services.MaterialVendor.UpdateMaterialVendor(materialNumber, vendorToUpdate);
+        await _services.MaterialVendorService.UpdateMaterialVendor(materialNumber, vendorToUpdate);
         return NoContent();
     }
 }

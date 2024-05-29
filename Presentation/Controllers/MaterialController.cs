@@ -23,7 +23,7 @@ public class MaterialController : ControllerBase
         return Ok(materials);
     }
 
-    [HttpGet("{MaterialNumber:int}", Name = "MaterialByMaterialNumber")]
+    [HttpGet("{MaterialNumber}", Name = "MaterialByMaterialNumber")]
     public async Task<IActionResult> GetMaterialByMaterialNumber(int materialNumber)
     {
         var material = await _services.MaterialService.GetMaterialByMaterialNumber(materialNumber);
@@ -42,14 +42,14 @@ public class MaterialController : ControllerBase
 
         return CreatedAtRoute("MaterialByMaterialNumber", new { hpMaterial.MaterialNumber }, hpMaterial);
     }
-    [HttpDelete("{materialNumber:int}")]
+    [HttpDelete("{materialNumber}")]
     public async Task<IActionResult> DeleteMaterial(int materialNumber)
     {
         await _services.MaterialService.DeleteMaterial(materialNumber);
 
         return NoContent();
     }
-    [HttpPut("{materialNumber:int}")]
+    [HttpPut("{materialNumber}")]
     public async Task<IActionResult> UpdateMaterial(int materialNumber, [FromBody] MaterialDTO materialToUpdate)
     {
         if (materialToUpdate is null)

@@ -40,10 +40,10 @@ CREATE TABLE Distillation.RawMaterialLog
     VendorName VARCHAR(25) NOT NULL,
     VendorLotNumber VARCHAR(25),
     SampleId INT,
-    InspectionLotNumber INT,
+    InspectionLotNumber BIGINT,
     ContainerNumber VARCHAR(7),
-    IssueDate DATE NOT NULL,
+    IssueDate DATE,
     NetWeight INT DEFAULT 180,
     MaterialNumber INT NOT NULL REFERENCES Materials.RawMaterialVendor(MaterialNumber)
-)
+);
 \i ../raven/DataUpload.sql;

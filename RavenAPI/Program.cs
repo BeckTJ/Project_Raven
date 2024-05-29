@@ -11,7 +11,6 @@ builder.Services.ConfigureRepoManager();
 builder.Services.ConfigureServiceManager();
 builder.Services.AddAutoMapper(typeof(Program));
 
-
 // builder.Services.Configure<ApiBehaviorOptions>(options =>
 // {
 //     options.SuppressModelStateInvalidFilter = true;
