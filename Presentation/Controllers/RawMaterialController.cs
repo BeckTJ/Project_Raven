@@ -27,10 +27,10 @@ public class RawMaterialController : ControllerBase
         var rawMaterial = await _services.RawMaterialService.GetRawMaterialByMaterialNumber(materialNumber);
         return Ok(rawMaterial);
     }
-    [HttpGet("{productId:string}", Name = "RawMaterialByProductId")]
-    public async Task<IActionResult> GetRawMaterialByProductId(string productId)
+    [HttpGet("{ProductLotNumber}", Name = "RawMaterialByProductId")]
+    public async Task<IActionResult> GetRawMaterialByProductId(string productLotNumber)
     {
-        var rawMaterial = await _services.RawMaterialService.GetRawMateriaByProductLotNumber(productId);
+        var rawMaterial = await _services.RawMaterialService.GetRawMateriaByProductLotNumber(productLotNumber);
         return Ok(rawMaterial);
     }
     [HttpPost]
@@ -46,12 +46,12 @@ public class RawMaterialController : ControllerBase
         return CreatedAtRoute("RawMaterialByProductId", new { material.ProductLotNumber }, material);
     }
     [HttpPut]
-    public async Task<IActionResult> UpdateRawMaterial(RawMaterialDTO rawMaterial)
+    public async Task<IActionResult> UpdateRawMaterial([FromBody] RawMaterialDTO rawMaterial)
     {
         await _services.RawMaterialService.UpdateRawMaterial(rawMaterial);
-        return NoContent();
+        return CreatedAtRoute("RawMaterialByProductId", new { rawMaterial.ProductLotNumber }, rawMaterial);
     }
-    [HttpDelete]
+    [HttpDelete("{productId}")]
     public async Task<IActionResult> DeleteRawMaterial(string productId)
     {
         await _services.RawMaterialService.DeleteRawMaterial(productId);
