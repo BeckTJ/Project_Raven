@@ -5,17 +5,17 @@ namespace Entities
 {
     public partial class Rawmateriallog
     {
-        public string Productlotnumber { get; set; } = null!;
-        public int? Productbatchnumber { get; set; }
-        public string Vendorname { get; set; } = null!;
-        public string? Vendorlotnumber { get; set; }
-        public int? Sampleid { get; set; }
-        public long? Inspectionlotnumber { get; set; }
-        public string? Containernumber { get; set; }
-        public DateOnly? Issuedate { get; set; }
-        public int? Netweight { get; set; }
-        public int Materialnumber { get; set; }
+        public string ProductLotNumber { get; set; } = null!;
+        public int? ProductBatchNumber { get; set; }
+        public string VendorName { get; set; } = null!;
+        public string? VendorLotNumber { get; set; }
+        public int? SampleId { get; set; }
+        public long? InspectionLotNumber { get; set; }
+        public string? ContainerNumber { get; set; }
+        public DateOnly? IssueDate { get; set; } = null;
+        public int? NetWeight { get; set; }
+        public int MaterialNumber { get; set; }
 
-        public virtual Rawmaterialvendor MaterialnumberNavigation { get; set; } = null!;
+        public virtual Rawmaterialvendor MaterialNumberNavigation { get; set; } = null!;
     }
 }

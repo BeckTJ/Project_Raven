@@ -21,13 +21,13 @@ public class RawMaterialController : ControllerBase
         var rawMaterial = await _services.RawMaterialService.GetAllRawMaterial();
         return Ok(rawMaterial);
     }
-    [HttpGet("{materialNumber}", Name = "RawMaterialByMaterialNumber")]
+    [HttpGet("{materialNumber:int}", Name = "RawMaterialByMaterialNumber")]
     public async Task<IActionResult> GetRawMaterialByMaterialNumber(int materialNumber)
     {
         var rawMaterial = await _services.RawMaterialService.GetRawMaterialByMaterialNumber(materialNumber);
         return Ok(rawMaterial);
     }
-    [HttpGet("{productId}", Name = "RawMaterialByProductId")]
+    [HttpGet("{productId:string}", Name = "RawMaterialByProductId")]
     public async Task<IActionResult> GetRawMaterialByProductId(string productId)
     {
         var rawMaterial = await _services.RawMaterialService.GetRawMateriaByProductLotNumber(productId);
@@ -36,7 +36,13 @@ public class RawMaterialController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateRawMaterial([FromBody] RawMaterialDTO rawMaterial)
     {
+        if (rawMaterial is null)
+            return BadRequest();
+        if (!ModelState.IsValid)
+            return UnprocessableEntity(ModelState);
+
         var material = await _services.RawMaterialService.CreateRawMaterial(rawMaterial);
+
         return CreatedAtRoute("RawMaterialByProductId", new { material.ProductLotNumber }, material);
     }
     [HttpPut]

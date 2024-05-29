@@ -7,7 +7,7 @@ public record RawMaterialDTO
     public string VendorName { get; set; } = null!;
     public string? VendorLotNumber { get; set; }
     public int? SampleId { get; set; }
-    public int? InspectionLotNumber { get; set; }
+    public long? InspectionLotNumber { get; set; }
     public string? ContainerNumber { get; set; }
     public DateOnly IssueDate { get; set; }
     public int? NetWeight { get; set; }
