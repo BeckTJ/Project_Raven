@@ -23,4 +23,8 @@
     <ProjectReference Include="..\Services.Contracts\Services.Contracts.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+     <InternalsVisibleTo Include="RavenAPI.Tests.Integration" />
+  </ItemGroup>
+
 </Project>

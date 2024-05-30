@@ -1,25 +1,32 @@
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
 
 namespace RavenAPI.Tests.Integration.ControllerTests;
 
-public class MaterialControllerTests
+public class MaterialControllerTests : IClassFixture<CustomWebApplicationFactory<Program>>
 {
-    private readonly TestServer _server;
     private readonly HttpClient _client;
-    public MaterialControllerTests()
+    private readonly CustomWebApplicationFactory<Program> _factory;
+    public MaterialControllerTests(CustomWebApplicationFactory<Program> factory)
     {
-        _server = new TestServer(new WebHostBuilder().UseStartup<Program>());
-        _client = _server.CreateClient();
+        _factory = factory;
+        _client = factory.CreateClient(new WebApplicationFactoryClientOptions
+        {
+            AllowAutoRedirect = false
+        });
     }
-    [Fact]
-    public async void Test1()
-    {
-        var responce = await _client.GetAsync("/RavenAPI/Material/58245");
-        responce.EnsureSuccessStatusCode();
-        var responceString = await responce.Content.ReadAsStringAsync();
+    [Theory]
+    [InlineData("RavenAPI/Material")]
+    [InlineData("RavenAPI/MaterialVendor")]
+    [InlineData("RavenAPI/RawMaterial")]
 
-        Assert.Contains("Beer", responceString);
+    public async void Test1(string url)
+    {
+        var response = await _client.GetAsync(url);
+
+        response.EnsureSuccessStatusCode().ToString();
+        Assert.Equal("text/html; charset=utf-8",
+            response.Content.Headers.ContentType.ToString());
     }
 }
