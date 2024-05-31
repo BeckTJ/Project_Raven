@@ -25,7 +25,7 @@ public class CustomWebApplicationFactory<TProgram>
 
             services.AddSingleton<DbConnection>(container =>
             {
-                var connection = new NpgsqlConnection("DataSource=localhost;");
+                var connection = new NpgsqlConnection("Host=db;Port=5432;Database=raven;User Id=postgres;Password=password;");
                 connection.Open();
 
                 return connection;

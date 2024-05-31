@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
+    <PackageReference Include="NEST" Version="7.17.5" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,10 +22,8 @@
     <ProjectReference Include="..\Presentation\Presentation.csproj" />
     <ProjectReference Include="..\Services\Services.csproj" />
     <ProjectReference Include="..\Services.Contracts\Services.Contracts.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-     <InternalsVisibleTo Include="RavenAPI.Tests.Integration" />
+    <ProjectReference Include="..\LoggerService\LoggerService.csproj" />
+    <ProjectReference Include="..\contracts\Contracts.csproj" />
   </ItemGroup>
 
 </Project>
