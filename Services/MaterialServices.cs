@@ -3,6 +3,7 @@ using Entities;
 using Repo.Contracts;
 using Services.Contracts;
 using shared.DTO;
+using shared.Exceptions;
 
 namespace Services;
 internal sealed class MaterialServices : IMaterialServices
@@ -22,7 +23,7 @@ internal sealed class MaterialServices : IMaterialServices
     }
     public async Task<MaterialDTO> GetMaterialByMaterialNumber(int materialNumber)
     {
-        var material = await _repo.MaterialRepo.GetMaterialByMaterialNumber(materialNumber);
+        var material = await _repo.MaterialRepo.GetMaterialByMaterialNumber(materialNumber) ?? throw new MaterialNotFoundException(materialNumber);
         var materialDTO = _mapper.Map<MaterialDTO>(material);
         return materialDTO;
     }

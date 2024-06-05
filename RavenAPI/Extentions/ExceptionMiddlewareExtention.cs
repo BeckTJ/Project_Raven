@@ -1,7 +1,7 @@
-
 using System.Net;
 using Contracts;
-using Entities;
+using shared.ErrorModel;
+using shared.Exceptions;
 using Microsoft.AspNetCore.Diagnostics;
 
 namespace RavenAPI.Extentions;
@@ -30,8 +30,8 @@ public static class ExceptionMiddlewareExtention
                     await context.Response.WriteAsync(new ErrorDetails()
                     {
                         StatusCode = context.Response.StatusCode,
-                        MessageProcessingHandler = contextFeature.Error.Message,
-                    }).ToString();
+                        Message = contextFeature.Error.Message,
+                    }.ToString());
                 }
             });
         });

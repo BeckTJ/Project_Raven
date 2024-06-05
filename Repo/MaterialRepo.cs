@@ -2,7 +2,6 @@ using Entities;
 using Microsoft.EntityFrameworkCore;
 using Repo.Contracts;
 
-
 namespace Repo;
 
 internal sealed class MaterialRepo : RepoBase<Highpuritymaterial>, IMaterialRepo

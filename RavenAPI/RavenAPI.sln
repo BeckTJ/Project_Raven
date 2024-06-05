@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RavenAPI.UnitTests", "..\Ra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerService", "..\LoggerService\LoggerService.csproj", "{1CCD25D9-7BEC-4A11-93F9-4F263365A71D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "..\Contracts\Contracts.csproj", "{39F12E0F-C2DC-4ED7-9E98-3D154CB8E174}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "..\Contracts\Contracts.csproj", "{70C2F371-DFEA-4152-AAAB-91F18974CFBA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,10 +71,10 @@ Global
 		{1CCD25D9-7BEC-4A11-93F9-4F263365A71D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CCD25D9-7BEC-4A11-93F9-4F263365A71D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CCD25D9-7BEC-4A11-93F9-4F263365A71D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{39F12E0F-C2DC-4ED7-9E98-3D154CB8E174}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{39F12E0F-C2DC-4ED7-9E98-3D154CB8E174}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{39F12E0F-C2DC-4ED7-9E98-3D154CB8E174}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{39F12E0F-C2DC-4ED7-9E98-3D154CB8E174}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70C2F371-DFEA-4152-AAAB-91F18974CFBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70C2F371-DFEA-4152-AAAB-91F18974CFBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70C2F371-DFEA-4152-AAAB-91F18974CFBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70C2F371-DFEA-4152-AAAB-91F18974CFBA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

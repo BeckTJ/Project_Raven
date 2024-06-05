@@ -5,6 +5,8 @@ using Repo;
 using Services;
 using Services.Contracts;
 using Npgsql;
+using Contracts;
+using LoggerService;
 
 namespace RavenAPI.Extentions;
 
@@ -24,6 +26,8 @@ public static class ServiceExtentions
     {
         services.Configure<IISOptions>(options => { });
     }
+    public static void ConfigureLoggerService(this IServiceCollection services) =>
+        services.AddSingleton<ILoggerManager, LoggerManager>();
     public static void ConfigurePostgresContext(this IServiceCollection services, IConfiguration config)
     {
         var conStr = new NpgsqlConnectionStringBuilder(

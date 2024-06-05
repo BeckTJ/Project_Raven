@@ -1,13 +1,14 @@
 using RavenAPI.Extentions;
 using Microsoft.AspNetCore.HttpOverrides;
-using Microsoft.AspNetCore.Mvc.TagHelpers;
-using System.Security.Cryptography.X509Certificates;
+using NLog;
 
 var builder = WebApplication.CreateBuilder(args);
 
+LogManager.Setup().LoadConfigurationFromFile("/nlog.config");
 // Add services to the container.
 builder.Services.ConfigureCors();
 builder.Services.ConfigureIISIntegration();
+builder.Services.ConfigureLoggerService();
 builder.Services.ConfigurePostgresContext(builder.Configuration);
 builder.Services.ConfigureRepoManager();
 builder.Services.ConfigureServiceManager();
