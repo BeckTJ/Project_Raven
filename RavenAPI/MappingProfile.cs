@@ -13,13 +13,13 @@ public class MappingProfile : Profile
      */
     public MappingProfile()
     {
-        CreateMap<Highpuritymaterial, MaterialDTO>();
-        CreateMap<MaterialDTO, Highpuritymaterial>();
+        CreateMap<HighPurityMaterial, MaterialDTO>();
+        CreateMap<MaterialDTO, HighPurityMaterial>();
 
-        CreateMap<Rawmaterialvendor, MaterialVendorDTO>();
-        CreateMap<MaterialVendorDTO, Rawmaterialvendor>();
+        CreateMap<RawMaterialVendor, MaterialVendorDTO>();
+        CreateMap<MaterialVendorDTO, RawMaterialVendor>();
 
-        CreateMap<Rawmateriallog, RawMaterialDTO>();
-        CreateMap<RawMaterialDTO, Rawmateriallog>();
+        CreateMap<RawMaterialLog, RawMaterialDTO>();
+        CreateMap<RawMaterialDTO, RawMaterialLog>();
     }
 }

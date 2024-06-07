@@ -29,7 +29,7 @@ internal sealed class MaterialServices : IMaterialServices
     }
     public async Task<MaterialDTO> AddMaterial(MaterialDTO material)
     {
-        var hpMaterial = _mapper.Map<Highpuritymaterial>(material);
+        var hpMaterial = _mapper.Map<HighPurityMaterial>(material);
         _repo.MaterialRepo.CreateMaterial(hpMaterial);
         await _repo.Save();
         var materialReturn = _mapper.Map<MaterialDTO>(hpMaterial);
@@ -37,7 +37,7 @@ internal sealed class MaterialServices : IMaterialServices
     }
     public async Task UpdateMaterial(int materialNumber, MaterialDTO material)
     {
-        var hpMaterial = _mapper.Map<Highpuritymaterial>(material);
+        var hpMaterial = _mapper.Map<HighPurityMaterial>(material);
         _repo.MaterialRepo.UpdateMaterial(hpMaterial);
 
         await _repo.Save();

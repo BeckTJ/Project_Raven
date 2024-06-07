@@ -4,26 +4,26 @@ using Repo.Contracts;
 
 namespace Repo;
 
-internal sealed class MaterialRepo : RepoBase<Highpuritymaterial>, IMaterialRepo
+internal sealed class MaterialRepo : RepoBase<HighPurityMaterial>, IMaterialRepo
 {
     public MaterialRepo(ravenContext ctx) : base(ctx) { }
 
-    public async Task<IEnumerable<Highpuritymaterial>> GetAllMaterial() =>
+    public async Task<IEnumerable<HighPurityMaterial>> GetAllMaterial() =>
         await FindAll()
             .Include(m => m.RawMaterialVendors)
             .ToListAsync();
 
-    public async Task<Highpuritymaterial> GetMaterialByMaterialBinomial(string binomial) =>
+    public async Task<HighPurityMaterial> GetMaterialByMaterialBinomial(string binomial) =>
         await FindByCondition(m => m.Binomial == binomial).FirstAsync();
 
-    public async Task<Highpuritymaterial> GetMaterialByMaterialNumber(int materialNumber) =>
+    public async Task<HighPurityMaterial> GetMaterialByMaterialNumber(int materialNumber) =>
         await FindByCondition(m => m.MaterialNumber == materialNumber).FirstAsync();
 
-    public void CreateMaterial(Highpuritymaterial material) =>
+    public void CreateMaterial(HighPurityMaterial material) =>
          Create(material);
 
-    public void UpdateMaterial(Highpuritymaterial material) =>
+    public void UpdateMaterial(HighPurityMaterial material) =>
         Update(material);
-    public void DeleteMaterial(Highpuritymaterial material) =>
+    public void DeleteMaterial(HighPurityMaterial material) =>
         Delete(material);
 }

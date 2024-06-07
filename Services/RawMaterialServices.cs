@@ -39,14 +39,14 @@ internal sealed class RawMaterialServices : IRawMaterialServices
     }
     public async Task<RawMaterialDTO> CreateRawMaterial(RawMaterialDTO rawMaterial)
     {
-        var material = _mapper.Map<Rawmateriallog>(rawMaterial);
+        var material = _mapper.Map<RawMaterialLog>(rawMaterial);
         _repo.RawMaterial.CreateRawMaterial(material);
         await _repo.Save();
         return rawMaterial;
     }
     public async Task UpdateRawMaterial(RawMaterialDTO rawMaterial)
     {
-        var material = _mapper.Map<Rawmateriallog>(rawMaterial);
+        var material = _mapper.Map<RawMaterialLog>(rawMaterial);
         _repo.RawMaterial.UpdateRawMaterial(material);
         await _repo.Save();
     }

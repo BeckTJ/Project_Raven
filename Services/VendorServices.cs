@@ -36,21 +36,21 @@ internal sealed class VendorServices : IVendorServices
     public async Task<MaterialVendorDTO> AddMaterialVendor(MaterialVendorDTO material)
     {
         //needs to be changed
-        var rmMaterial = _mapper.Map<Rawmaterialvendor>(material);
+        var rmMaterial = _mapper.Map<RawMaterialVendor>(material);
         _repo.VendorRepo.CreateMaterial(rmMaterial);
         await _repo.Save();
         return material;
     }
     public async Task UpdateMaterialVendor(int materialNumber, MaterialVendorDTO material)
     {
-        var rmMaterial = _mapper.Map<Rawmaterialvendor>(material);
+        var rmMaterial = _mapper.Map<RawMaterialVendor>(material);
         _repo.VendorRepo.UpdateMaterial(rmMaterial);
         await _repo.Save();
     }
     public async Task DeleteMaterialVendor(int materialNumber)
     {
         var material = await _repo.VendorRepo.GetVendorByMaterialNumber(materialNumber);
-        var rmMaterial = _mapper.Map<Rawmaterialvendor>(material);
+        var rmMaterial = _mapper.Map<RawMaterialVendor>(material);
         _repo.VendorRepo.DeleteMaterial(rmMaterial);
         await _repo.Save();
     }

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace Entities
 {
-    public partial class Highpuritymaterial
+    public partial class HighPurityMaterial
     {
-        public Highpuritymaterial()
+        public HighPurityMaterial()
         {
-            RawMaterialVendors = new HashSet<Rawmaterialvendor>();
+            RawMaterialVendors = new HashSet<RawMaterialVendor>();
         }
 
         public int MaterialNumber { get; set; }
@@ -20,6 +20,6 @@ namespace Entities
         public int TotalRecords { get; set; }
         public string? UnitOfIssue { get; set; }
 
-        public virtual ICollection<Rawmaterialvendor> RawMaterialVendors { get; set; }
+        public virtual ICollection<RawMaterialVendor> RawMaterialVendors { get; set; }
     }
 }

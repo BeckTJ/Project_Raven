@@ -16,9 +16,10 @@ namespace Entities
         {
         }
 
-        public virtual DbSet<Highpuritymaterial> HighPurityMaterials { get; set; } = null!;
-        public virtual DbSet<Rawmateriallog> RawMaterialLogs { get; set; } = null!;
-        public virtual DbSet<Rawmaterialvendor> Rawmaterialvendors { get; set; } = null!;
+        public virtual DbSet<DateCode> DateCodes { get; set; } = null!;
+        public virtual DbSet<HighPurityMaterial> HighPurityMaterials { get; set; } = null!;
+        public virtual DbSet<RawMaterialLog> RawMaterialLogs { get; set; } = null!;
+        public virtual DbSet<RawMaterialVendor> RawMaterialVendors { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -31,18 +32,34 @@ namespace Entities
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Highpuritymaterial>(entity =>
+            modelBuilder.Entity<DateCode>(entity =>
+            {
+                entity.HasKey(e => e.DateId)
+                    .HasName("date_code_pkey");
+
+                entity.ToTable("date_code", "distillation");
+
+                entity.Property(e => e.DateId)
+                    .ValueGeneratedNever()
+                    .HasColumnName("date_id");
+
+                entity.Property(e => e.DateCode1)
+                    .HasMaxLength(1)
+                    .HasColumnName("date_code");
+            });
+
+            modelBuilder.Entity<HighPurityMaterial>(entity =>
             {
                 entity.HasKey(e => e.MaterialNumber)
-                    .HasName("highpuritymaterial_pkey");
+                    .HasName("high_purity_material_pkey");
 
-                entity.ToTable("highpuritymaterial", "materials");
+                entity.ToTable("high_purity_material", "materials");
 
                 entity.Property(e => e.MaterialNumber)
                     .ValueGeneratedNever()
-                    .HasColumnName("materialnumber");
+                    .HasColumnName("material_number");
 
-                entity.Property(e => e.BatchManaged).HasColumnName("batchmanaged");
+                entity.Property(e => e.BatchManaged).HasColumnName("batch_managed");
 
                 entity.Property(e => e.Binomial)
                     .HasMaxLength(6)
@@ -50,107 +67,107 @@ namespace Entities
 
                 entity.Property(e => e.MaterialCode)
                     .HasMaxLength(3)
-                    .HasColumnName("materialcode");
+                    .HasColumnName("material_code");
 
                 entity.Property(e => e.MaterialName)
                     .HasMaxLength(25)
-                    .HasColumnName("materialname");
+                    .HasColumnName("material_name");
 
                 entity.Property(e => e.PermitNumber)
                     .HasMaxLength(25)
-                    .HasColumnName("permitnumber");
+                    .HasColumnName("permit_number");
 
-                entity.Property(e => e.SequenceId).HasColumnName("sequenceid");
+                entity.Property(e => e.SequenceId).HasColumnName("sequence_id");
 
-                entity.Property(e => e.TotalRecords).HasColumnName("totalrecords");
+                entity.Property(e => e.TotalRecords).HasColumnName("total_records");
 
                 entity.Property(e => e.UnitOfIssue)
                     .HasMaxLength(3)
-                    .HasColumnName("unitofissue");
+                    .HasColumnName("unit_of_issue");
             });
 
-            modelBuilder.Entity<Rawmateriallog>(entity =>
+            modelBuilder.Entity<RawMaterialLog>(entity =>
             {
                 entity.HasKey(e => e.ProductLotNumber)
-                    .HasName("rawmateriallog_pkey");
+                    .HasName("raw_material_log_pkey");
 
-                entity.ToTable("rawmateriallog", "distillation");
+                entity.ToTable("raw_material_log", "distillation");
 
                 entity.Property(e => e.ProductLotNumber)
                     .HasMaxLength(10)
-                    .HasColumnName("productlotnumber");
+                    .HasColumnName("product_lot_number");
 
                 entity.Property(e => e.ContainerNumber)
                     .HasMaxLength(7)
-                    .HasColumnName("containernumber");
+                    .HasColumnName("container_number");
 
-                entity.Property(e => e.InspectionLotNumber).HasColumnName("inspectionlotnumber");
+                entity.Property(e => e.InspectionLotNumber).HasColumnName("inspection_lot_number");
 
-                entity.Property(e => e.IssueDate).HasColumnName("issuedate");
+                entity.Property(e => e.IssueDate).HasColumnName("issue_date");
 
-                entity.Property(e => e.MaterialNumber).HasColumnName("materialnumber");
+                entity.Property(e => e.MaterialNumber).HasColumnName("material_number");
 
                 entity.Property(e => e.NetWeight)
-                    .HasColumnName("netweight")
+                    .HasColumnName("net_weight")
                     .HasDefaultValueSql("180");
 
-                entity.Property(e => e.ProductBatchNumber).HasColumnName("productbatchnumber");
+                entity.Property(e => e.ProductBatchNumber).HasColumnName("product_batch_number");
 
-                entity.Property(e => e.SampleId).HasColumnName("sampleid");
+                entity.Property(e => e.SampleId).HasColumnName("sample_id");
 
                 entity.Property(e => e.VendorLotNumber)
                     .HasMaxLength(25)
-                    .HasColumnName("vendorlotnumber");
+                    .HasColumnName("vendor_lot_number");
 
                 entity.Property(e => e.VendorName)
                     .HasMaxLength(25)
-                    .HasColumnName("vendorname");
+                    .HasColumnName("vendor_name");
 
                 entity.HasOne(d => d.MaterialNumberNavigation)
                     .WithMany(p => p.RawMaterialLogs)
                     .HasForeignKey(d => d.MaterialNumber)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("rawmateriallog_materialnumber_fkey");
+                    .HasConstraintName("raw_material_log_material_number_fkey");
             });
 
-            modelBuilder.Entity<Rawmaterialvendor>(entity =>
+            modelBuilder.Entity<RawMaterialVendor>(entity =>
             {
                 entity.HasKey(e => e.MaterialNumber)
-                    .HasName("rawmaterialvendor_pkey");
+                    .HasName("raw_material_vendor_pkey");
 
-                entity.ToTable("rawmaterialvendor", "materials");
+                entity.ToTable("raw_material_vendor", "materials");
 
                 entity.Property(e => e.MaterialNumber)
                     .ValueGeneratedNever()
-                    .HasColumnName("materialnumber");
+                    .HasColumnName("material_number");
 
-                entity.Property(e => e.BatchManaged).HasColumnName("batchmanaged");
+                entity.Property(e => e.BatchManaged).HasColumnName("batch_managed");
 
-                entity.Property(e => e.ContainerNumberRequired).HasColumnName("containernumberrequired");
+                entity.Property(e => e.ContainerNumberRequired).HasColumnName("container_number_required");
 
                 entity.Property(e => e.MaterialCode)
                     .HasMaxLength(3)
-                    .HasColumnName("materialcode");
+                    .HasColumnName("material_code");
 
-                entity.Property(e => e.ParentMaterialNumber).HasColumnName("parentmaterialnumber");
+                entity.Property(e => e.ParentMaterialNumber).HasColumnName("parent_material_number");
 
-                entity.Property(e => e.Sequenceid).HasColumnName("sequenceid");
+                entity.Property(e => e.SequenceId).HasColumnName("sequence_id");
 
-                entity.Property(e => e.TotalRecords).HasColumnName("totalrecords");
+                entity.Property(e => e.TotalRecords).HasColumnName("total_records");
 
                 entity.Property(e => e.UnitOfIssue)
                     .HasMaxLength(3)
-                    .HasColumnName("unitofissue");
+                    .HasColumnName("unit_of_issue");
 
                 entity.Property(e => e.VendorName)
                     .HasMaxLength(25)
-                    .HasColumnName("vendorname");
+                    .HasColumnName("vendor_name");
 
-                entity.HasOne(d => d.ParentmaterialnumberNavigation)
+                entity.HasOne(d => d.ParentMaterialNumberNavigation)
                     .WithMany(p => p.RawMaterialVendors)
                     .HasForeignKey(d => d.ParentMaterialNumber)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("rawmaterialvendor_parentmaterialnumber_fkey");
+                    .HasConstraintName("raw_material_vendor_parent_material_number_fkey");
             });
 
             OnModelCreatingPartial(modelBuilder);

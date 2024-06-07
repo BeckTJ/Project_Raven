@@ -4,20 +4,20 @@ using Repo.Contracts;
 
 namespace Repo;
 
-internal sealed class RawMaterialRepo : RepoBase<Rawmateriallog>, IRawMaterialRepo
+internal sealed class RawMaterialRepo : RepoBase<RawMaterialLog>, IRawMaterialRepo
 {
     public RawMaterialRepo(ravenContext ctx) : base(ctx) { }
 
-    public async Task<IEnumerable<Rawmateriallog>> GetAllRawMaterial() =>
+    public async Task<IEnumerable<RawMaterialLog>> GetAllRawMaterial() =>
         await FindAll().ToListAsync();
-    public async Task<IEnumerable<Rawmateriallog>> GetRawMaterialByMaterialNumber(int materialNumber) =>
+    public async Task<IEnumerable<RawMaterialLog>> GetRawMaterialByMaterialNumber(int materialNumber) =>
         await FindByCondition(m => m.MaterialNumber == materialNumber).ToListAsync();
-    public async Task<Rawmateriallog> GetRawMaterialByProductLotNumber(string lotNumber) =>
+    public async Task<RawMaterialLog> GetRawMaterialByProductLotNumber(string lotNumber) =>
         await FindByCondition(m => m.ProductLotNumber == lotNumber).FirstAsync();
-    public void CreateRawMaterial(Rawmateriallog rawMaterial) =>
+    public void CreateRawMaterial(RawMaterialLog rawMaterial) =>
         Create(rawMaterial);
-    public void UpdateRawMaterial(Rawmateriallog rawMaterial) =>
+    public void UpdateRawMaterial(RawMaterialLog rawMaterial) =>
         Update(rawMaterial);
-    public void DeleteRawMaterial(Rawmateriallog rawMaterial) =>
+    public void DeleteRawMaterial(RawMaterialLog rawMaterial) =>
         Delete(rawMaterial);
 }

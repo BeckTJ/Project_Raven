@@ -1,4 +1,4 @@
-\copy Materials.HighPurityMaterial from 'MaterialData.csv' delimiter ',' csv header;
+\copy Materials.High_Purity_Material from 'MaterialData.csv' delimiter ',' csv header;
 
 create temporary table vendor(
     MaterialNumber INT NOT NULL PRIMARY KEY,
@@ -14,9 +14,23 @@ create temporary table vendor(
 
 \copy vendor from 'MaterialVendor.csv' delimiter ',' csv header;
 
-INSERT INTO Materials.RawMaterialVendor
-(MaterialNumber,VendorName,MaterialCode,BatchManaged,ContainerNumberRequired,SequenceId,TotalRecords,UnitOfIssue,ParentMaterialNumber)
+INSERT INTO Materials.Raw_Material_Vendor
+(Material_Number,Vendor_Name,Material_Code,Batch_Managed,Container_Number_Required,Sequence_Id,Total_Records,Unit_Of_Issue,Parent_Material_Number)
 SELECT MaterialNumber, VendorName, MaterialCode, BatchManaged, ContainerNumberRequired, SequenceId, TotalRecords, UnitOfIssue,
-(SELECT MaterialNumber From Materials.HighPurityMaterial WHERE MaterialNumber = ParentMaterialNumber) from vendor;
+(SELECT Material_Number From Materials.High_Purity_Material WHERE Material_Number = ParentMaterialNumber) from vendor;
 
-\copy Distillation.RawMaterialLog from 'RawMaterial.csv' delimiter ',' csv header;
+\copy Distillation.Raw_Material_Log from 'RawMaterial.csv' delimiter ',' csv header;
+
+INSERT INTO Distillation.Date_Code(Date_Id, Date_Code)
+VALUES(1, 'A'),
+    (2, 'B'),
+    (3, 'C'),
+    (4, 'D'),
+    (5, 'E'),
+    (6, 'F'),
+    (7, 'G'),
+    (8, 'H'),
+    (9, 'I'),
+    (10, 'J'),
+    (11, 'K'),
+    (12, 'L')

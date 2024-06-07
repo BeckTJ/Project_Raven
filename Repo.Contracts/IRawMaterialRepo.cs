@@ -4,10 +4,10 @@ namespace Repo.Contracts;
 
 public interface IRawMaterialRepo
 {
-    public Task<IEnumerable<Rawmateriallog>> GetAllRawMaterial();
-    public Task<IEnumerable<Rawmateriallog>> GetRawMaterialByMaterialNumber(int materialNumber);
-    public Task<Rawmateriallog> GetRawMaterialByProductLotNumber(string lotNumber);
-    public void CreateRawMaterial(Rawmateriallog rawMaterial);
-    public void UpdateRawMaterial(Rawmateriallog rawMaterial);
-    public void DeleteRawMaterial(Rawmateriallog rawMaterial);
+    public Task<IEnumerable<RawMaterialLog>> GetAllRawMaterial();
+    public Task<IEnumerable<RawMaterialLog>> GetRawMaterialByMaterialNumber(int materialNumber);
+    public Task<RawMaterialLog> GetRawMaterialByProductLotNumber(string lotNumber);
+    public void CreateRawMaterial(RawMaterialLog rawMaterial);
+    public void UpdateRawMaterial(RawMaterialLog rawMaterial);
+    public void DeleteRawMaterial(RawMaterialLog rawMaterial);
 }

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace Entities
 {
-    public partial class Rawmaterialvendor
+    public partial class RawMaterialVendor
     {
-        public Rawmaterialvendor()
+        public RawMaterialVendor()
         {
-            RawMaterialLogs = new HashSet<Rawmateriallog>();
+            RawMaterialLogs = new HashSet<RawMaterialLog>();
         }
 
         public int MaterialNumber { get; set; }
@@ -15,12 +15,12 @@ namespace Entities
         public string MaterialCode { get; set; } = null!;
         public bool? BatchManaged { get; set; }
         public bool? ContainerNumberRequired { get; set; }
-        public int Sequenceid { get; set; }
+        public int SequenceId { get; set; }
         public int TotalRecords { get; set; }
         public string? UnitOfIssue { get; set; }
         public int ParentMaterialNumber { get; set; }
 
-        public virtual Highpuritymaterial ParentmaterialnumberNavigation { get; set; } = null!;
-        public virtual ICollection<Rawmateriallog> RawMaterialLogs { get; set; }
+        public virtual HighPurityMaterial ParentMaterialNumberNavigation { get; set; } = null!;
+        public virtual ICollection<RawMaterialLog> RawMaterialLogs { get; set; }
     }
 }
