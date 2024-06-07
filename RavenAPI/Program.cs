@@ -10,8 +10,7 @@ builder.Services.ConfigureCors();
 builder.Services.ConfigureIISIntegration();
 builder.Services.ConfigureLoggerService();
 builder.Services.ConfigurePostgresContext(builder.Configuration);
-builder.Services.ConfigureRepoManager();
-builder.Services.ConfigureServiceManager();
+builder.Services.ConfigureManager();
 builder.Services.AddAutoMapper(typeof(Program));
 
 // builder.Services.Configure<ApiBehaviorOptions>(options =>

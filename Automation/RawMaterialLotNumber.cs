@@ -1,22 +1,25 @@
-﻿using Automation.Contracts;
-using Repo.Contracts;
+using Automation.Contracts;
 using shared.Exceptions;
+using Repo.Contracts;
 
 namespace Automation;
-internal sealed class ProductLotNumber : IProductLotNumber
+
+internal sealed class RawMaterialLotNumber : IProductLotNumber
 {
     private readonly IRepoManager _repo;
-    public ProductLotNumber(IRepoManager repo)
+
+    public RawMaterialLotNumber(IRepoManager repo)
     {
         _repo = repo;
     }
     public async Task<string> GetInitialLotNumber(int materialNumber)
     {
-        var material = await _repo.MaterialRepo.GetMaterialByMaterialNumber(materialNumber);
-        if (material is null)
-            throw new MaterialNotFoundException(materialNumber);
+        var material = await _repo.VendorRepo.GetVendorByMaterialNumber(materialNumber)
+            ?? throw new MaterialNotFoundException(materialNumber);
+
         return material.SequenceId + material.MaterialCode;
     }
+
     public async Task<string> UpdateLotNumber(string lotNumber)
     {
         var currentMonth = DateTime.Now.Month;
@@ -25,5 +28,9 @@ internal sealed class ProductLotNumber : IProductLotNumber
         var dateCode = await _repo.DateCode.GetDateCode(currentMonth);
         var updatedLotNumber = lotNumber + currentYear + dateCode.DateCode1 + currentDay;
         return updatedLotNumber;
+    }
+    public async Task<string> GetLastLotNumber(int materialNumber)
+    {
+        throw new NotImplementedException();
     }
 }

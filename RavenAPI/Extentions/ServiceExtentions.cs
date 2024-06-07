@@ -7,6 +7,8 @@ using Services.Contracts;
 using Npgsql;
 using Contracts;
 using LoggerService;
+using Automation;
+using Automation.Contracts;
 
 namespace RavenAPI.Extentions;
 
@@ -39,12 +41,11 @@ public static class ServiceExtentions
         var connectionString = conStr.ConnectionString;
         services.AddDbContext<ravenContext>(o => o.UseNpgsql(connectionString));
     }
-    public static void ConfigureRepoManager(this IServiceCollection services)
+    public static void ConfigureManager(this IServiceCollection services)
     {
         services.AddScoped<IRepoManager, RepoManager>();
-    }
-    public static void ConfigureServiceManager(this IServiceCollection services)
-    {
         services.AddScoped<IServiceManager, ServiceManager>();
+        services.AddScoped<IAutoManager, AutoManager>();
+
     }
 }
