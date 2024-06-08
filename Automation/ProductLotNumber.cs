@@ -17,6 +17,12 @@ internal sealed class ProductLotNumber : IProductLotNumber
             throw new MaterialNotFoundException(materialNumber);
         return material.SequenceId + material.MaterialCode;
     }
+
+    public Task<string> GetLastLotNumber(int materialNumber)
+    {
+        throw new NotImplementedException();
+    }
+
     public async Task<string> UpdateLotNumber(string lotNumber)
     {
         var currentMonth = DateTime.Now.Month;

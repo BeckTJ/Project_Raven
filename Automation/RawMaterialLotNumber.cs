@@ -31,6 +31,11 @@ internal sealed class RawMaterialLotNumber : IProductLotNumber
     }
     public async Task<string> GetLastLotNumber(int materialNumber)
     {
-        throw new NotImplementedException();
+        var material = await _repo.RawMaterial.GetRawMaterialByMaterialNumber(materialNumber) ?? throw new RawMaterialNotFoundException(materialNumber);
+        
+        var rawMaterial = material.OrderByDescending(m => m.ProductLotNumber).First();
+
+        return rawMaterial.ProductLotNumber;
+
     }
 }

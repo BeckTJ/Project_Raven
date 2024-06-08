@@ -9,7 +9,7 @@ namespace Automation.Tests;
 
 public class RawMaterialLotNumberTests
 {
-    private IAutoManager _sut;
+    private IAutoManager? _sut;
     private readonly List<RawMaterialLog> rawMaterial = new()
     {
         new RawMaterialLog()
@@ -80,13 +80,18 @@ public class RawMaterialLotNumberTests
     public async void Get_LastLotNumber_Pass()
     {
         var materialNumber = 12345;
+        var expected = "101AA4F08";
         _repo.RawMaterial.GetRawMaterialByMaterialNumber(materialNumber).Returns(rawMaterial);
         _sut = new AutoManager(_repo);
+
+        var actual = await _sut.RawMaterialLotNumber.GetLastLotNumber(materialNumber);
+
+        Assert.Equal(expected, actual);
     }
     [Fact]
     public async void Get_LastLotNumber_NotFound()
     {
-        int materialNumber = 12345;
+        int materialNumber = 0;
         _sut = new AutoManager(_repo);
 
         var e = await Record.ExceptionAsync(() => _sut.RawMaterialLotNumber.GetLastLotNumber(materialNumber));
