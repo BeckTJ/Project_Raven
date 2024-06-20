@@ -1,0 +1,19 @@
+﻿Required_Id,Material_Type,Product_Type,Assay,Water,Metals,Chloride,Boron,Phosphorus,Material_Number
+1,Finish Product,Finish Product,1,1,1,1,0,0,58245
+2,Finish Product,Finish Product,1,0,1,0,1,0,58423
+3,Finish Product,Finish Product,1,1,1,0,1,1,58931
+4,Finish Product,Finish Product,1,0,1,1,0,0,58765
+5,Finish Product,Finish Product,1,0,1,1,1,1,58971
+6,Finish Product,Finish Product,1,1,1,1,0,0,58143
+7,Raw Material,New,1,1,1,0,0,0,58245
+8,Raw Material,Old,1,1,0,0,0,0,58245
+9,Raw Material,New,1,1,1,1,1,0,58423
+10,Raw Material,New,1,1,1,1,1,1,58931
+11,Raw Material,New,0,0,1,1,0,0,58765
+12,Raw Material,New,1,0,1,1,1,1,58971
+13,Raw Material,Old,1,0,0,0,0,0,58971
+14,Raw Material,New,1,1,1,0,0,0,58143
+15,Raw Material,Old,1,1,0,0,0,0,58143
+16,Reclaim,Reclaim,1,1,0,0,1,0,58423
+17,Reclaim,Reclaim,1,1,0,0,0,0,58931
+18,Reclaim,Reclaim,0,0,1,0,0,0,58765

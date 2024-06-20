@@ -12,6 +12,7 @@ namespace RavenAPI.UnitTests;
 public class MaterialServiceTests
 {
     private IServiceManager? _sut;
+
     private readonly IRepoManager _repo = Substitute.For<IRepoManager>();
     private readonly MapperConfiguration _config = new MapperConfiguration(cfg =>
     {

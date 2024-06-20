@@ -15,6 +15,10 @@ internal sealed class VendorRepo : RepoBase<RawMaterialVendor>, IVendorRepo
             .Include(m => m.RawMaterialLogs)
             .ToListAsync();
 
+    public async Task<RawMaterialVendor> GetVendorWithRawMaterialLogByMaterialNumber(int materialNumber) =>
+        await FindByCondition(m => m.MaterialNumber == materialNumber)
+            .Include(m => m.RawMaterialLogs)
+            .FirstAsync();
     public async Task<RawMaterialVendor> GetVendorByMaterialNumber(int materialNumber) =>
         await FindByCondition(m => m.MaterialNumber == materialNumber).FirstAsync();
 

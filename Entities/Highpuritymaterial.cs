@@ -7,7 +7,9 @@ namespace Entities
     {
         public HighPurityMaterial()
         {
+            HazardLabels = new HashSet<HazardLabel>();
             RawMaterialVendors = new HashSet<RawMaterialVendor>();
+            SampleRequireds = new HashSet<SampleRequired>();
         }
 
         public int MaterialNumber { get; set; }
@@ -20,6 +22,8 @@ namespace Entities
         public int TotalRecords { get; set; }
         public string? UnitOfIssue { get; set; }
 
+        public virtual ICollection<HazardLabel> HazardLabels { get; set; }
         public virtual ICollection<RawMaterialVendor> RawMaterialVendors { get; set; }
+        public virtual ICollection<SampleRequired> SampleRequireds { get; set; }
     }
 }
