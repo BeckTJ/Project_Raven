@@ -6,6 +6,7 @@ public interface IRepoManager
     IVendorRepo VendorRepo { get; }
     IRawMaterialRepo RawMaterial { get; }
     IDateCode DateCode { get; }
+    IProductLotNumber LotNumber { get; }
     Task Save();
 
 }

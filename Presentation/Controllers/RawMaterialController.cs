@@ -34,7 +34,7 @@ public class RawMaterialController : ControllerBase
         return Ok(rawMaterial);
     }
     [HttpPost]
-    public async Task<IActionResult> CreateRawMaterial([FromBody] RawMaterialDTO rawMaterial)
+    public async Task<IActionResult> CreateRawMaterial([FromBody] CreateRawMaterialDTO rawMaterial)
     {
         if (rawMaterial is null)
             return BadRequest();

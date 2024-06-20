@@ -24,8 +24,6 @@
     <ProjectReference Include="..\Services.Contracts\Services.Contracts.csproj" />
     <ProjectReference Include="..\LoggerService\LoggerService.csproj" />
     <ProjectReference Include="..\Contracts\Contracts.csproj" />
-    <ProjectReference Include="..\Automation\Automation.csproj" />
-    <ProjectReference Include="..\Automation.Contracts\Automation.Contracts.csproj" />
   </ItemGroup>
 
 </Project>
