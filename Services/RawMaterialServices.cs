@@ -39,6 +39,11 @@ internal sealed class RawMaterialServices : IRawMaterialServices
     }
     public async Task<RawMaterialDTO> CreateRawMaterial(CreateRawMaterialDTO rawMaterial)
     {
+        /*
+        * check for sample requirnments
+        * check input requirenments
+        * connect to sample database (automate sample submit)
+        */
         var raw = _mapper.Map<RawMaterialDTO>(rawMaterial);
         raw.ProductLotNumber = await _repo.LotNumber.GetProductLotNumber(rawMaterial.MaterialNumber);
 
