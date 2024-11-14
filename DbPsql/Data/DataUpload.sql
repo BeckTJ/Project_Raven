@@ -5,7 +5,7 @@ create temporary table vendor(
     VendorName VARCHAR(25) NOT NULL,
     MaterialCode VARCHAR(3) NOT NULL,
     BatchManaged BOOLEAN,
-    ContainerNumberRequired BOOLEAN,
+    ContainerNumberRequired BOOLEAN, 
     SequenceId INT NOT NULL,
     TotalRecords INT NOT NULL,
     UnitOfIssue VARCHAR(3),

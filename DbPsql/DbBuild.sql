@@ -10,7 +10,7 @@ CREATE SCHEMA Materials;
 CREATE SCHEMA Distillation;
 CREATE SCHEMA Quality_Control;
 
-CREATE TABLE Materials.High_Purity_Material
+CREATE TABLE Materials.High_Purity_Material 
 (
     Material_Number INT NOT NULL PRIMARY KEY,
     Material_Name VARCHAR(25) NOT NULL,

@@ -11,4 +11,4 @@ BEGIN
         Select Concat(sequence_id,Material_Code) From Materials.Raw_Material_Vendor Where material_Number = 32716; --36178 -> no drums issued
 
     ELSE  
-        if(lotNumber)
+        if(lotNumber) 
