@@ -95,3 +95,4 @@ CREATE TABLE Quality_Control.Hazard_Labels
     Material_Number INT REFERENCES Materials.High_Purity_Material(Material_Number)
 );
 \i ../raven/DataUpload.sql;
+\i ../raven/GetNextDrumId.sql;

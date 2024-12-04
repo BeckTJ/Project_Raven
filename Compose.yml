@@ -21,7 +21,7 @@ services:
     secrets:
       - my_secrets.json
     ports:
-      - 8080:80
+      - 8082:80
     depends_on:
       - db
 secrets:
