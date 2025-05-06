@@ -13,6 +13,15 @@ builder.Services.ConfigurePostgresContext(builder.Configuration);
 builder.Services.ConfigureManager();
 builder.Services.AddAutoMapper(typeof(Program));
 
+builder.Services.AddSwaggerGen();
+builder.Services.ConfigureSwaggerGen(setup =>
+{
+    setup.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "Raven",
+        Version = "v1",
+    });
+});
 // builder.Services.Configure<ApiBehaviorOptions>(options =>
 // {
 //     options.SuppressModelStateInvalidFilter = true;
@@ -27,6 +36,11 @@ builder.Services.AddControllers(config =>
 .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly);
 
 var app = builder.Build();
+app.UseSwagger();
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwaggerUI();
+}
 
 if (app.Environment.IsProduction())
 {
