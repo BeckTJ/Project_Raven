@@ -4,7 +4,7 @@ using shared.DTO;
 
 namespace Presentation.Controllers;
 
-[Route("RavenAPI/Material")]
+[Route("/Material")]
 [ApiController]
 
 public class MaterialController : ControllerBase
