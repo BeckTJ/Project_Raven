@@ -9,6 +9,7 @@ public interface IVendorRepo
     public Task<RawMaterialVendor> GetVendorByMaterialNumber(int materialNumber);
     public Task<RawMaterialVendor> GetVendorByVendorName(string vendorName);
     public Task<RawMaterialVendor> GetVendorWithRawMaterialLogByMaterialNumber(int materialNumber);
+    public Task<IEnumerable<RawMaterialVendor>> GetVendorsByParentMaterialNumber(int materialNumber);
     public void CreateMaterial(RawMaterialVendor material);
     public void UpdateMaterial(RawMaterialVendor material);
     public void DeleteMaterial(RawMaterialVendor material);

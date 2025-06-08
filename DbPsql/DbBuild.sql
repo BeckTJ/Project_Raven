@@ -94,5 +94,5 @@ CREATE TABLE Quality_Control.Hazard_Labels
     Dusty BOOLEAN,
     Material_Number INT REFERENCES Materials.High_Purity_Material(Material_Number)
 );
-\i ../raven/DataUpload.sql;
+i ../raven/DataUpload.sql;
 \i ../raven/GetNextDrumId.sql;

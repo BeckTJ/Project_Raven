@@ -11,5 +11,5 @@ public interface IVendorServices
     public Task<MaterialVendorDTO> AddMaterialVendor(MaterialVendorDTO material);
     public Task UpdateMaterialVendor(int materialNumber, MaterialVendorDTO material);
     public Task DeleteMaterialVendor(int materialNumber);
-
+    Task<IEnumerable<MaterialVendorDTO>> GetVendorsByParentMaterialNumber(int parentMaterialNumber);
 }

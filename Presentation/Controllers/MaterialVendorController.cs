@@ -21,11 +21,17 @@ public class MaterialVendorController : ControllerBase
         return Ok(vendor);
     }
 
-    [HttpGet("{MaterialNumber}", Name = "VendorByMaterialNumber")]
+    [HttpGet("{MaterialNumber}", Name = "VendorByVendorMaterialNumber")]
     public async Task<IActionResult> GetMaterialVendorByMaterialNumber(int materialNumber)
     {
         var vendor = await _services.MaterialVendorService.GetVendorByMaterialNumber(materialNumber);
         return Ok(vendor);
+    }
+    [HttpGet("{ParentMaterialNumber}", Name = "VendorByParentMaterialNumber")]
+    public async Task<IActionResult> GetMaterialVendorWithParentMaterialNumber(int ParentMaterialNumber)
+    {
+        var vendors = await _services.MaterialVendorService.GetVendorsByParentMaterialNumber(ParentMaterialNumber);
+        return Ok(vendors);
     }
 
     [HttpPost]

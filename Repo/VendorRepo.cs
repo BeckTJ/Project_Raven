@@ -25,6 +25,9 @@ internal sealed class VendorRepo : RepoBase<RawMaterialVendor>, IVendorRepo
     public async Task<RawMaterialVendor> GetVendorByVendorName(string vendorName) =>
         await FindByCondition(m => m.VendorName == vendorName).FirstAsync();
 
+    public async Task<IEnumerable<RawMaterialVendor>> GetVendorsByParentMaterialNumber(int materialNumber) =>
+        await FindByCondition(m => m.ParentMaterialNumber == materialNumber).ToListAsync();
+
     public void CreateMaterial(RawMaterialVendor material) =>
         Create(material);
 

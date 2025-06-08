@@ -27,6 +27,12 @@ internal sealed class VendorServices : IVendorServices
         var vendorDTO = _mapper.Map<MaterialVendorDTO>(vendor);
         return vendorDTO;
     }
+    public async Task<IEnumerable<MaterialVendorDTO>> GetVendorsByParentMaterialNumber(int parentMaterialNumber)
+    {
+        var vendors = await _repo.VendorRepo.GetVendorsByParentMaterialNumber(parentMaterialNumber);
+        var vendorDTO = _mapper.Map<IEnumerable<MaterialVendorDTO>>(vendors);
+        return vendorDTO;
+    }
     public async Task<MaterialVendorDTO> GetVendorByVendorName(string vendorName)
     {
         var vendor = await _repo.VendorRepo.GetVendorByVendorName(vendorName);
@@ -54,4 +60,6 @@ internal sealed class VendorServices : IVendorServices
         _repo.VendorRepo.DeleteMaterial(rmMaterial);
         await _repo.Save();
     }
+
+
 }
