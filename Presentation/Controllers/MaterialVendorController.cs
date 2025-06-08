@@ -27,12 +27,6 @@ public class MaterialVendorController : ControllerBase
         var vendor = await _services.MaterialVendorService.GetVendorByMaterialNumber(materialNumber);
         return Ok(vendor);
     }
-    [HttpGet("{ParentMaterialNumber}", Name = "VendorByParentMaterialNumber")]
-    public async Task<IActionResult> GetMaterialVendorWithParentMaterialNumber(int ParentMaterialNumber)
-    {
-        var vendors = await _services.MaterialVendorService.GetVendorsByParentMaterialNumber(ParentMaterialNumber);
-        return Ok(vendors);
-    }
 
     [HttpPost]
     public async Task<IActionResult> CreateMaterialVendor([FromBody] MaterialVendorDTO vendor)
