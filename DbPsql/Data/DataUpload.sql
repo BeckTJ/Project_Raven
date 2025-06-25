@@ -19,7 +19,7 @@ INSERT INTO Materials.Raw_Material_Vendor
 SELECT MaterialNumber, VendorName, MaterialCode, BatchManaged, ContainerNumberRequired, SequenceId, TotalRecords, UnitOfIssue,
 (SELECT Material_Number From Materials.High_Purity_Material WHERE Material_Number = ParentMaterialNumber) from vendor;
 
-\copy Distillation.Raw_Material_Log from 'RawMaterial.csv' delimiter ',' csv header;
+\copy Quality_Control.Sample_Status from 'SampleStatus.csv' delimiter ',' csv header;
 
 INSERT INTO Distillation.Date_Code(Date_Id, Date_Code)
 VALUES(1, 'A'),
@@ -54,3 +54,22 @@ VALUES('Finish Product','Finish Product','1','1','1','1','0','0',(SELECT Materia
     ('Reclaim','Reclaim','1','1','0','0','1','0',(SELECT Material_Number FROM Materials.High_Purity_Material WHERE Material_Number = 58423)),
     ('Reclaim','Reclaim','1','1','0','0','0','0',(SELECT Material_Number FROM Materials.High_Purity_Material WHERE Material_Number = 58931)),
     ('Reclaim','Reclaim','0','0','1','0','0','0',(SELECT Material_Number FROM Materials.High_Purity_Material WHERE Material_Number = 58765));
+
+CREATE temporary TABLE Raw_Material
+(
+    Product_Lot_Number VARCHAR(10) NOT NULL PRIMARY KEY,
+    Vendor_Lot_Number VARCHAR(25),
+    Batch_Number INT,
+    Container_Number VARCHAR(7),
+    Issue_Date TIMESTAMP,
+    Net_Weight INT ,
+    Material_Number INT,
+    SampleId INT 
+);
+
+    \copy Raw_Material from 'RawMaterial.csv' delimiter ',' csv header;
+
+    INSERT INTO Distillation.Raw_Material_Log(Product_Lot_Number,Vendor_Lot_Number,Batch_Number,Container_Number,Issue_Date,Net_Weight,Material_Number,Sample_Id)
+    SELECT Product_Lot_Number,Vendor_Lot_Number,Batch_Number,Container_Number,Issue_Date,Net_Weight,
+    (SELECT Material_Number FROM Materials.Raw_Material_Vendor WHERE Material_Number = Raw_Material.Material_Number),
+    (SELECT Sample_Id FROM Quality_Control.Sample_Status WHERE Sample_Id = SampleId) FROM Raw_Material;

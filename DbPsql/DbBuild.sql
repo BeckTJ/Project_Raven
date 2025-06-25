@@ -22,6 +22,7 @@ CREATE TABLE Materials.High_Purity_Material
     Total_Records INT NOT NULL,
     Unit_Of_Issue VARCHAR(3)
 );
+
 CREATE TABLE Materials.Raw_Material_Vendor 
 (
     Material_Number INT NOT NULL PRIMARY KEY,
@@ -34,33 +35,39 @@ CREATE TABLE Materials.Raw_Material_Vendor
     Unit_Of_Issue VARCHAR(3),
     Parent_Material_Number INT NOT NULL REFERENCES Materials.High_Purity_Material(Material_Number)
 );
+CREATE TABLE Quality_Control.Sample_Status
+(
+    Sample_Id INT PRIMARY KEY,
+    Sample_Type CHAR(3),
+    Inspection_Lot_Number BIGINT,
+    Submit_Date TIMESTAMP,
+    Approved BOOLEAN,
+    Rejected BOOLEAN,
+    Status_Date TIMESTAMP
+);
 CREATE TABLE Distillation.Raw_Material_Log
 (
     Product_Lot_Number VARCHAR(10) NOT NULL PRIMARY KEY,
-    Product_Batch_Number INT,
     Vendor_Lot_Number VARCHAR(25),
-    Sample_Id INT,
-    Inspection_Lot_Number BIGINT,
+    Batch_Number INT,
     Container_Number VARCHAR(7),
     Issue_Date TIMESTAMP,
     Net_Weight INT DEFAULT 180,
-    Material_Number INT NOT NULL REFERENCES Materials.Raw_Material_Vendor(Material_Number)
+    Material_Number INT NOT NULL REFERENCES Materials.Raw_Material_Vendor(Material_Number),
+    Sample_Id INT REFERENCES Quality_Control.Sample_Status(Sample_Id)
 );
 CREATE TABLE Distillation.Date_Code
 (
     Date_Id Int PRIMARY KEY,
     Date_Code CHAR
 );
-CREATE TABLE Quality_Control.Sample_Status
+
+CREATE TABLE Materials.Material_Vendor_Lots
 (
-    Sample_Id INT PRIMARY KEY,
-    Sample_Type CHAR(3),
-    Product_Lot_Number VARCHAR(10),
-    Vendor_Lot_Number VARCHAR(25),
-    Submit_Date TIMESTAMP,
-    Approved BOOLEAN,
-    Rejected BOOLEAN,
-    Status_Date TIMESTAMP
+    Vendor_Lot_Number VARCHAR(25) PRIMARY KEY,
+    Batch_Number INT,
+    Quantity Int,
+    Material_Number INT REFERENCES Materials.Raw_Material_Vendor(Material_Number)
 );
 CREATE TABLE Quality_Control.Sample_Required
 (
@@ -94,5 +101,5 @@ CREATE TABLE Quality_Control.Hazard_Labels
     Dusty BOOLEAN,
     Material_Number INT REFERENCES Materials.High_Purity_Material(Material_Number)
 );
-i ../raven/DataUpload.sql;
+\i ../raven/DataUpload.sql;
 \i ../raven/GetNextDrumId.sql;

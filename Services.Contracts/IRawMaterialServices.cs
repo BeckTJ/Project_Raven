@@ -9,4 +9,5 @@ public interface IRawMaterialServices
     public Task<RawMaterialDTO> CreateRawMaterial(CreateRawMaterialDTO rawMaterial);
     public Task UpdateRawMaterial(RawMaterialDTO rawMaterial);
     public Task DeleteRawMaterial(string productId);
+    public Task<RawMaterialDTO> GetRawMaterialByVendorLot(string lotNumber);
 }

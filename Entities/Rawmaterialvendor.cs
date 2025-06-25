@@ -7,6 +7,7 @@ namespace Entities
     {
         public RawMaterialVendor()
         {
+            MaterialVendorLots = new HashSet<MaterialVendorLot>();
             RawMaterialLogs = new HashSet<RawMaterialLog>();
         }
 
@@ -21,6 +22,7 @@ namespace Entities
         public int ParentMaterialNumber { get; set; }
 
         public virtual HighPurityMaterial ParentMaterialNumberNavigation { get; set; } = null!;
+        public virtual ICollection<MaterialVendorLot> MaterialVendorLots { get; set; }
         public virtual ICollection<RawMaterialLog> RawMaterialLogs { get; set; }
     }
 }

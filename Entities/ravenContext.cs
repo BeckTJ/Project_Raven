@@ -19,6 +19,7 @@ namespace Entities
         public virtual DbSet<DateCode> DateCodes { get; set; } = null!;
         public virtual DbSet<HazardLabel> HazardLabels { get; set; } = null!;
         public virtual DbSet<HighPurityMaterial> HighPurityMaterials { get; set; } = null!;
+        public virtual DbSet<MaterialVendorLot> MaterialVendorLots { get; set; } = null!;
         public virtual DbSet<RawMaterialLog> RawMaterialLogs { get; set; } = null!;
         public virtual DbSet<RawMaterialVendor> RawMaterialVendors { get; set; } = null!;
         public virtual DbSet<SampleRequired> SampleRequireds { get; set; } = null!;
@@ -134,6 +135,29 @@ namespace Entities
                     .HasColumnName("unit_of_issue");
             });
 
+            modelBuilder.Entity<MaterialVendorLot>(entity =>
+            {
+                entity.HasKey(e => e.VendorLotNumber)
+                    .HasName("material_vendor_lots_pkey");
+
+                entity.ToTable("material_vendor_lots", "materials");
+
+                entity.Property(e => e.VendorLotNumber)
+                    .HasMaxLength(25)
+                    .HasColumnName("vendor_lot_number");
+
+                entity.Property(e => e.BatchNumber).HasColumnName("batch_number");
+
+                entity.Property(e => e.MaterialNumber).HasColumnName("material_number");
+
+                entity.Property(e => e.Quantity).HasColumnName("quantity");
+
+                entity.HasOne(d => d.MaterialNumberNavigation)
+                    .WithMany(p => p.MaterialVendorLots)
+                    .HasForeignKey(d => d.MaterialNumber)
+                    .HasConstraintName("material_vendor_lots_material_number_fkey");
+            });
+
             modelBuilder.Entity<RawMaterialLog>(entity =>
             {
                 entity.HasKey(e => e.ProductLotNumber)
@@ -145,11 +169,11 @@ namespace Entities
                     .HasMaxLength(10)
                     .HasColumnName("product_lot_number");
 
+                entity.Property(e => e.BatchNumber).HasColumnName("batch_number");
+
                 entity.Property(e => e.ContainerNumber)
                     .HasMaxLength(7)
                     .HasColumnName("container_number");
-
-                entity.Property(e => e.InspectionLotNumber).HasColumnName("inspection_lot_number");
 
                 entity.Property(e => e.IssueDate)
                     .HasColumnType("timestamp without time zone")
@@ -160,8 +184,6 @@ namespace Entities
                 entity.Property(e => e.NetWeight)
                     .HasColumnName("net_weight")
                     .HasDefaultValueSql("180");
-
-                entity.Property(e => e.ProductBatchNumber).HasColumnName("product_batch_number");
 
                 entity.Property(e => e.SampleId).HasColumnName("sample_id");
 
@@ -174,6 +196,11 @@ namespace Entities
                     .HasForeignKey(d => d.MaterialNumber)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("raw_material_log_material_number_fkey");
+
+                entity.HasOne(d => d.Sample)
+                    .WithMany(p => p.RawMaterialLogs)
+                    .HasForeignKey(d => d.SampleId)
+                    .HasConstraintName("raw_material_log_sample_id_fkey");
             });
 
             modelBuilder.Entity<RawMaterialVendor>(entity =>
@@ -266,9 +293,7 @@ namespace Entities
 
                 entity.Property(e => e.Approved).HasColumnName("approved");
 
-                entity.Property(e => e.ProductLotNumber)
-                    .HasMaxLength(10)
-                    .HasColumnName("product_lot_number");
+                entity.Property(e => e.InspectionLotNumber).HasColumnName("inspection_lot_number");
 
                 entity.Property(e => e.Rejected).HasColumnName("rejected");
 
@@ -284,10 +309,6 @@ namespace Entities
                 entity.Property(e => e.SubmitDate)
                     .HasColumnType("timestamp without time zone")
                     .HasColumnName("submit_date");
-
-                entity.Property(e => e.VendorLotNumber)
-                    .HasMaxLength(25)
-                    .HasColumnName("vendor_lot_number");
             });
 
             OnModelCreatingPartial(modelBuilder);

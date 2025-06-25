@@ -9,11 +9,15 @@ internal sealed class RawMaterialRepo : RepoBase<RawMaterialLog>, IRawMaterialRe
     public RawMaterialRepo(ravenContext ctx) : base(ctx) { }
 
     public async Task<IEnumerable<RawMaterialLog>> GetAllRawMaterial() =>
-        await FindAll().ToListAsync();
+        await FindAll().Include(s => s.Sample).ToListAsync();
     public async Task<IEnumerable<RawMaterialLog>> GetRawMaterialByMaterialNumber(int materialNumber) =>
-        await FindByCondition(m => m.MaterialNumber == materialNumber).ToListAsync();
-    public async Task<RawMaterialLog> GetRawMaterialByProductLotNumber(string lotNumber) =>
-        await FindByCondition(m => m.ProductLotNumber == lotNumber).FirstAsync();
+        await FindByCondition(m => m.MaterialNumber == materialNumber).Include(s => s.Sample).ToListAsync();
+    public async Task<RawMaterialLog> GetRawMaterialByProductLotNumber(string productLot) =>
+        await FindByCondition(m => m.ProductLotNumber == productLot)
+            .Include(s => s.Sample).FirstAsync();
+    public async Task<RawMaterialLog> GetRawMaterialByVendorLot(string vendorLot) =>
+        await FindByCondition(v => v.VendorLotNumber == vendorLot)
+            .Include(s => s.Sample).FirstAsync();
     public void CreateRawMaterial(RawMaterialLog rawMaterial) =>
         Create(rawMaterial);
     public void UpdateRawMaterial(RawMaterialLog rawMaterial) =>

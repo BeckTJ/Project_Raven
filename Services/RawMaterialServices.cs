@@ -37,6 +37,13 @@ internal sealed class RawMaterialServices : IRawMaterialServices
 
         return rawMaterial;
     }
+    public async Task<RawMaterialDTO> GetRawMaterialByVendorLot(string lotNumber)
+    {
+        var rawMaterial = await _repo.RawMaterial.GetRawMaterialByVendorLot(lotNumber);
+        var rawMaterialDTO = _mapper.Map<RawMaterialDTO>(rawMaterial);
+
+        return rawMaterialDTO;
+    }
     public async Task<RawMaterialDTO> CreateRawMaterial(CreateRawMaterialDTO rawMaterial)
     {
         /*
