@@ -3,7 +3,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Repo.Contracts\Repo.Contracts.csproj" />
     <ProjectReference Include="..\Services.Contracts\Services.Contracts.csproj" />
-    <ProjectReference Include="..\Sampling.Contracts\Sampling.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>
