@@ -21,7 +21,7 @@ public class RawMaterialController : ControllerBase
         var rawMaterial = await _services.RawMaterialService.GetAllRawMaterial();
         return Ok(rawMaterial);
     }
-    [HttpGet("{materialNumber:int}", Name = "RawMaterialByMaterialNumber")]
+    [HttpGet("{MaterialNumber:int}", Name = "RawMaterialByMaterialNumber")]
     public async Task<IActionResult> GetRawMaterialByMaterialNumber(int materialNumber)
     {
         var rawMaterial = await _services.RawMaterialService.GetRawMaterialByMaterialNumber(materialNumber);
