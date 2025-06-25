@@ -23,9 +23,9 @@ public class VendorLotController : ControllerBase
         return Ok(vendorLot);
     }
     [HttpGet("{VendorLotNumber}")]
-    public async Task<IActionResult> GetVendorLotByLotNumber(string lotNumber)
+    public async Task<IActionResult> GetVendorLotByLotNumber(string vendorLotNumber)
     {
-        var vendorLot = await _services.RawMaterialService.GetRawMaterialByVendorLot(lotNumber);
+        var vendorLot = await _services.RawMaterialService.GetRawMaterialByVendorLot(vendorLotNumber);
         return Ok(vendorLot);
     }
 }
