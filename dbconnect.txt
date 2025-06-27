@@ -4,3 +4,6 @@ dotnet ef dbcontext scaffold "Host=my_host;Database=my_db;
 
 
     dotnet ef dbcontext scaffold "Host=localhost;Database=raven; Username=postgres;Password=password" Npgsql.EntityFrameworkCore.PostgreSQL
+
+    {Use for unit tests}
+    dotnet add package Microsoft.EntityFrameworkCore.InMemory --version 9.0.6
