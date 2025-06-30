@@ -7,5 +7,4 @@ public record VendorLotDTO
     public int BatchNumber { get; set; }
     public int MaterialNumber { get; set; }
     public int Quantity { get; set; }
-    public int SampleId { get; set; }
 }

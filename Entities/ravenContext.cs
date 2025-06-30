@@ -137,20 +137,22 @@ namespace Entities
 
             modelBuilder.Entity<MaterialVendorLot>(entity =>
             {
-                entity.HasKey(e => e.VendorLotNumber)
+                entity.HasKey(e => e.LotId)
                     .HasName("material_vendor_lots_pkey");
 
                 entity.ToTable("material_vendor_lots", "materials");
 
-                entity.Property(e => e.VendorLotNumber)
-                    .HasMaxLength(25)
-                    .HasColumnName("vendor_lot_number");
+                entity.Property(e => e.LotId).HasColumnName("lot_id");
 
                 entity.Property(e => e.BatchNumber).HasColumnName("batch_number");
 
                 entity.Property(e => e.MaterialNumber).HasColumnName("material_number");
 
                 entity.Property(e => e.Quantity).HasColumnName("quantity");
+
+                entity.Property(e => e.VendorLotNumber)
+                    .HasMaxLength(25)
+                    .HasColumnName("vendor_lot_number");
 
                 entity.HasOne(d => d.MaterialNumberNavigation)
                     .WithMany(p => p.MaterialVendorLots)
@@ -169,8 +171,6 @@ namespace Entities
                     .HasMaxLength(10)
                     .HasColumnName("product_lot_number");
 
-                entity.Property(e => e.BatchNumber).HasColumnName("batch_number");
-
                 entity.Property(e => e.ContainerNumber)
                     .HasMaxLength(7)
                     .HasColumnName("container_number");
@@ -178,6 +178,8 @@ namespace Entities
                 entity.Property(e => e.IssueDate)
                     .HasColumnType("timestamp without time zone")
                     .HasColumnName("issue_date");
+
+                entity.Property(e => e.LotId).HasColumnName("lot_id");
 
                 entity.Property(e => e.MaterialNumber).HasColumnName("material_number");
 
@@ -187,9 +189,10 @@ namespace Entities
 
                 entity.Property(e => e.SampleId).HasColumnName("sample_id");
 
-                entity.Property(e => e.VendorLotNumber)
-                    .HasMaxLength(25)
-                    .HasColumnName("vendor_lot_number");
+                entity.HasOne(d => d.Lot)
+                    .WithMany(p => p.RawMaterialLogs)
+                    .HasForeignKey(d => d.LotId)
+                    .HasConstraintName("raw_material_log_lot_id_fkey");
 
                 entity.HasOne(d => d.MaterialNumberNavigation)
                     .WithMany(p => p.RawMaterialLogs)

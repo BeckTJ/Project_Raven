@@ -9,17 +9,18 @@ internal sealed class RawMaterialRepo : RepoBase<RawMaterialLog>, IRawMaterialRe
     public RawMaterialRepo(ravenContext ctx) : base(ctx) { }
 
     public async Task<IEnumerable<RawMaterialLog>> GetAllRawMaterial() =>
-        await FindAll().Include(s => s.Sample).ToListAsync();
+        await FindAll().Include(v => v.Lot).Include(s => s.Sample).ToListAsync();
     public async Task<IEnumerable<RawMaterialLog>> GetRawMaterialByMaterialNumber(int materialNumber) =>
-        await FindByCondition(m => m.MaterialNumber == materialNumber).Include(s => s.Sample).ToListAsync();
+        await FindByCondition(m => m.MaterialNumber == materialNumber).Include(v => v.Lot).Include(s => s.Sample).ToListAsync();
     public async Task<RawMaterialLog> GetRawMaterialByProductLotNumber(string productLot) =>
         await FindByCondition(m => m.ProductLotNumber == productLot)
             .Include(s => s.Sample).FirstAsync();
     public async Task<RawMaterialLog> GetRawMaterialByVendorLot(string vendorLot) =>
-        await FindAll().Where(r => r.VendorLotNumber == vendorLot)
+        await FindAll().Where(r => r.Lot.VendorLotNumber == vendorLot)
+            .Include(l => l.Lot)
             .Include(s => s.Sample)
             .OrderByDescending(p => p.ProductLotNumber)
-            .FirstAsync(v => v.VendorLotNumber == vendorLot);
+            .FirstAsync();
     public void CreateRawMaterial(RawMaterialLog rawMaterial) =>
         Create(rawMaterial);
     public void UpdateRawMaterial(RawMaterialLog rawMaterial) =>

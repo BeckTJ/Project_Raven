@@ -36,4 +36,13 @@ internal sealed class VendorLotServices : IVendorLotServices
         var lotDTO = _mapper.Map<VendorLotDTO>(lot);
         return lotDTO;
     }
+    public async Task<bool> VerifyVendorLot(string vendorLot)
+    {
+        var lot = await _repo.VendorLotRepo.GetVendorLotByLotNumber(vendorLot);
+        if (lot != null)
+        {
+            return true;
+        }
+        return false;
+    }
 }

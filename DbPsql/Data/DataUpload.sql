@@ -1,5 +1,6 @@
 \copy Materials.High_Purity_Material from 'MaterialData.csv' delimiter ',' csv header;
 
+
 create temporary table vendor(
     MaterialNumber INT NOT NULL PRIMARY KEY,
     VendorName VARCHAR(25) NOT NULL,
@@ -18,6 +19,20 @@ INSERT INTO Materials.Raw_Material_Vendor
 (Material_Number,Vendor_Name,Material_Code,Batch_Managed,Container_Number_Required,Sequence_Id,Total_Records,Unit_Of_Issue,Parent_Material_Number)
 SELECT MaterialNumber, VendorName, MaterialCode, BatchManaged, ContainerNumberRequired, SequenceId, TotalRecords, UnitOfIssue,
 (SELECT Material_Number From Materials.High_Purity_Material WHERE Material_Number = ParentMaterialNumber) from vendor;
+
+create temporary table vendorLot(
+    LotId INT PRIMARY KEY,
+    VendorLotNumber VARCHAR(25),
+    BatchNumber INT,
+    Quantity Int,
+    MaterialNumber INT
+);
+\copy vendorLot from 'VendorLot.csv' delimiter ',' csv header;
+
+INSERT INTO Materials.Material_Vendor_Lots(Lot_Id,Vendor_Lot_Number,Batch_Number,Quantity,Material_Number)
+SELECT LotId,VendorLotNumber,BatchNumber,Quantity,(SELECT Material_Number FROM Materials.Raw_Material_Vendor WHERE Material_Number = MaterialNumber)
+FROM vendorLot;
+
 
 \copy Quality_Control.Sample_Status from 'SampleStatus.csv' delimiter ',' csv header;
 
@@ -69,7 +84,8 @@ CREATE temporary TABLE Raw_Material
 
     \copy Raw_Material from 'RawMaterial.csv' delimiter ',' csv header;
 
-    INSERT INTO Distillation.Raw_Material_Log(Product_Lot_Number,Vendor_Lot_Number,Batch_Number,Container_Number,Issue_Date,Net_Weight,Material_Number,Sample_Id)
-    SELECT Product_Lot_Number,Vendor_Lot_Number,Batch_Number,Container_Number,Issue_Date,Net_Weight,
+    INSERT INTO Distillation.Raw_Material_Log(Product_Lot_Number,Container_Number,Issue_Date,Net_Weight,Lot_Id,Material_Number,Sample_Id)
+    SELECT Product_Lot_Number,Container_Number,Issue_Date,Net_Weight,
+    (SELECT Lot_Id FROM Materials.Material_Vendor_Lots WHERE Vendor_Lot_Number = Raw_Material.Vendor_Lot_Number AND Batch_Number = Raw_Material.Batch_Number),
     (SELECT Material_Number FROM Materials.Raw_Material_Vendor WHERE Material_Number = Raw_Material.Material_Number),
     (SELECT Sample_Id FROM Quality_Control.Sample_Status WHERE Sample_Id = SampleId) FROM Raw_Material;
