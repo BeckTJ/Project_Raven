@@ -28,4 +28,10 @@ public class VendorLotController : ControllerBase
         var rawMaterial = await _services.RawMaterialService.GetRawMaterialByVendorLot(vendorLotNumber);
         return Ok(rawMaterial);
     }
+    [HttpGet("VerifyVendorLot")]
+    public async Task<IActionResult> VerifyVendorLot(string lotNumber, int batchNumber)
+    {
+        var vendorLot = await _services.VendorLotServices.VerifyVendorLot(lotNumber, batchNumber);
+        return Ok(vendorLot);
+    }
 }

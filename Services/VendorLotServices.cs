@@ -45,4 +45,14 @@ internal sealed class VendorLotServices : IVendorLotServices
         }
         return false;
     }
+
+    public async Task<bool> VerifyVendorLot(string lotNumber, int batchNumber)
+    {
+        var lot = await _repo.VendorLotRepo.GetVendorLot(lotNumber, batchNumber);
+        if (lot != null)
+        {
+            return true;
+        }
+        return false;
+    }
 }
