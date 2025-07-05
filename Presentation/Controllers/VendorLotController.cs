@@ -34,4 +34,10 @@ public class VendorLotController : ControllerBase
         var vendorLot = await _services.VendorLotServices.VerifyVendorLot(lotNumber, batchNumber);
         return Ok(vendorLot);
     }
+    [HttpGet("VerifyVendorLotByLotNumber")]
+    public async Task<IActionResult> VerifyVendorLot(string lotNumber)
+    {
+        var vendorLot = await _services.VendorLotServices.VerifyVendorLot(lotNumber);
+        return Ok(vendorLot);
+    }
 }

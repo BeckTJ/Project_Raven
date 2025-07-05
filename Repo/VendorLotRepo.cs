@@ -17,9 +17,8 @@ internal sealed class VendorLotRepo : RepoBase<MaterialVendorLot>, IVendorLotRep
         await FindByCondition(m => m.MaterialNumber == materialNumber).ToListAsync();
 
     public async Task<MaterialVendorLot> GetVendorLotByLotNumber(string lotNumber) =>
-        await FindByCondition(l => l.VendorLotNumber == lotNumber).FirstOrDefaultAsync()
-        ?? throw new VendorLotNotFoundException(lotNumber);
+        await FindByCondition(l => l.VendorLotNumber == lotNumber).FirstOrDefaultAsync();
 
-    public async Task<MaterialVendorLot> GetVendorLot(string lotNumber, int batchNumber) =>
+    public async Task<MaterialVendorLot> GetVendorLot(string lotNumber, int? batchNumber) =>
         await FindByCondition(v => v.VendorLotNumber == lotNumber && v.BatchNumber == batchNumber).FirstOrDefaultAsync();
 }
