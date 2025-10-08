@@ -4,6 +4,7 @@ using Repo.Contracts;
 using Microsoft.EntityFrameworkCore;
 
 namespace Repo;
+
 public abstract class RepoBase<T> : IRepoBase<T> where T : class
 {
     protected ravenContext _ctx { get; set; }
@@ -17,4 +18,5 @@ public abstract class RepoBase<T> : IRepoBase<T> where T : class
     public IQueryable<T> FindAll() => _ctx.Set<T>().AsNoTracking();
     public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression) =>
         _ctx.Set<T>().Where(expression).AsNoTracking();
+    public void Save() => _ctx.SaveChanges();
 }

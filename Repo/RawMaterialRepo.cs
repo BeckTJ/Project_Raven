@@ -14,6 +14,7 @@ internal sealed class RawMaterialRepo : RepoBase<RawMaterialLog>, IRawMaterialRe
         await FindByCondition(m => m.MaterialNumber == materialNumber).Include(v => v.Lot).Include(s => s.Sample).ToListAsync();
     public async Task<RawMaterialLog> GetRawMaterialByProductLotNumber(string productLot) =>
         await FindByCondition(m => m.ProductLotNumber == productLot)
+            .Include(v => v.Lot)
             .Include(s => s.Sample).FirstAsync();
     public async Task<RawMaterialLog> GetRawMaterialByVendorLot(string vendorLot) =>
         await FindAll().Where(r => r.Lot.VendorLotNumber == vendorLot)

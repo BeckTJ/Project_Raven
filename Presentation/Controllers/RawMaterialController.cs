@@ -41,9 +41,9 @@ public class RawMaterialController : ControllerBase
         if (!ModelState.IsValid)
             return UnprocessableEntity(ModelState);
 
-        var material = await _services.RawMaterialService.CreateRawMaterial(rawMaterial);
+        var material = await _services.RawMaterialInputServices.CreateRawMaterial(rawMaterial);
 
-        return CreatedAtRoute("RawMaterialByProductId", new { material.ProductLotNumber }, material);
+        return CreatedAtRoute("RawMaterialByProductId", new { material.RawMaterialDrum.ProductLotNumber }, material);
     }
     [HttpPut]
     public async Task<IActionResult> UpdateRawMaterial([FromBody] RawMaterialDTO rawMaterial)

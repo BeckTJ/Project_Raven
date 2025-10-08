@@ -21,10 +21,14 @@ public class MappingProfile : Profile
 
         CreateMap<RawMaterialLog, RawMaterialDTO>();
         CreateMap<RawMaterialDTO, RawMaterialLog>();
-        CreateMap<CreateRawMaterialDTO, RawMaterialDTO>();
+        CreateMap<RawMaterialInputDTO, RawMaterialLog>();
 
         CreateMap<MaterialVendorLot, VendorLotDTO>();
+        CreateMap<VendorLotDTO, MaterialVendorLot>();
 
         CreateMap<SampleStatus, SampleStatusDTO>();
+
+        CreateMap<SampleRequired, RequiredSampleDTO>();
+
     }
 }

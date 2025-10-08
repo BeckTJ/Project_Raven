@@ -21,4 +21,20 @@ internal sealed class VendorLotRepo : RepoBase<MaterialVendorLot>, IVendorLotRep
 
     public async Task<MaterialVendorLot> GetVendorLot(string lotNumber, int? batchNumber) =>
         await FindByCondition(v => v.VendorLotNumber == lotNumber && v.BatchNumber == batchNumber).FirstOrDefaultAsync();
+
+    public void AddVendorLot(MaterialVendorLot materialVendorLot)
+    {
+        Create(materialVendorLot);
+    }
+
+    public void UpdateVendorLot(MaterialVendorLot materialVendorLot)
+    {
+        Update(materialVendorLot);
+    }
+
+    public void DeleteVendorLot(MaterialVendorLot materialVendorLot) =>
+        Delete(materialVendorLot);
+
+    public void SaveChanges() =>
+        Save();
 }

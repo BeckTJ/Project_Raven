@@ -6,4 +6,5 @@ public interface IServiceManager
     public IVendorServices MaterialVendorService { get; }
     public IRawMaterialServices RawMaterialService { get; }
     public IVendorLotServices VendorLotServices { get; }
+    public IRawMaterialInputServices RawMaterialInputServices { get; }
 }

@@ -9,6 +9,8 @@ public interface IRepoManager
     IProductLotNumber LotNumber { get; }
     IVendorLotRepo VendorLotRepo { get; }
     ISampleStatusRepo SampleStatusRepo { get; }
+    ISampleRequiredRepo SampleRequiredRepo { get; }
+    IProductLotNumber RawMaterialLotNumber { get; }
     Task Save();
 
 }

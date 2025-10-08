@@ -12,6 +12,7 @@ public sealed class ServiceManager : IServiceManager
     private readonly Lazy<IVendorServices> _vendor;
     private readonly Lazy<IRawMaterialServices> _rawMaterial;
     private readonly Lazy<IVendorLotServices> _vendorLot;
+    private readonly Lazy<IRawMaterialInputServices> _rawMaterialInput;
 
     public ServiceManager(IRepoManager repo, IMapper mapper)
     {
@@ -20,6 +21,7 @@ public sealed class ServiceManager : IServiceManager
         _material = new Lazy<IMaterialServices>(() => new MaterialServices(_repo, _mapper));
         _vendor = new Lazy<IVendorServices>(() => new VendorServices(_repo, _mapper));
         _rawMaterial = new Lazy<IRawMaterialServices>(() => new RawMaterialServices(_repo, _mapper));
+        _rawMaterialInput = new Lazy<IRawMaterialInputServices>(() => new RawMaterialInputServices(_repo, _mapper));
         _vendorLot = new Lazy<IVendorLotServices>(() => new VendorLotServices(_repo, _mapper));
     }
 
@@ -27,4 +29,5 @@ public sealed class ServiceManager : IServiceManager
     public IVendorServices MaterialVendorService => _vendor.Value;
     public IRawMaterialServices RawMaterialService => _rawMaterial.Value;
     public IVendorLotServices VendorLotServices => _vendorLot.Value;
+    public IRawMaterialInputServices RawMaterialInputServices => _rawMaterialInput.Value;
 }

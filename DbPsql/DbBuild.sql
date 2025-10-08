@@ -35,6 +35,15 @@ CREATE TABLE Materials.Raw_Material_Vendor
     Unit_Of_Issue VARCHAR(3),
     Parent_Material_Number INT NOT NULL REFERENCES Materials.High_Purity_Material(Material_Number)
 );
+-- Should this be used to control sequence id's
+
+-- CREATE TABLE Materials.Material_Sequence_Id
+-- (
+--     Material_Number INT NOT NULL PRIMARY KEY,
+--     Sequence_Id INT NOT NULL,
+--     Current_Id INT NOT NULL,
+--     Total_Records INT NOT NULL
+-- );
 CREATE TABLE Quality_Control.Sample_Status
 (
     Sample_Id INT PRIMARY KEY,
